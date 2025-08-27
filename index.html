@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfólio - Beatriz Silva Santos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        /* Enhanced Netflix-inspired: Dark theme, red accents, Poppins font, dynamic animations */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scrollbar-width: none; /* Firefox */
+        }
+        *::-webkit-scrollbar {
+            display: none; /* Chrome */
+        }
+        body, html {
+            font-family: 'Poppins', sans-serif;
+            background-color: #141414;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            transition: background-color 0.6s ease;
+        }
+        header.scrolled {
+            background-color: #141414;
+        }
+        .logo {
+            font-size: 2em;
+            font-weight: 700;
+            color: #e50914; /* Netflix red */
+            text-transform: uppercase;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: 500;
+            opacity: 0.83;
+            transition: opacity 0.3s;
+        }
+        nav a:hover {
+            opacity: 1;
+        }
+
+        .hero {
+            position: relative;
+            height: 100vh;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.7));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 60px;
+            animation: heroPulse 10s infinite alternate;
+        }
+        @keyframes heroPulse {
+            0% { background-color: #141414; }
+            100% { background-color: #1a1a1a; }
+        }
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInUp 1.5s ease forwards;
+        }
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .hero .profile-img {
+            width: 250px; /* Increased size to match title proportions */
+            height: 250px;
+            border-radius: 50%;
+            border: 4px solid #e50914;
+            margin: 0 auto 30px;
+            object-fit: cover;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.5);
+            animation: imgPop 1.5s ease-in-out;
+        }
+        @keyframes imgPop {
+            0% { transform: scale(0); }
+            80% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        .hero h1 {
+            font-size: 3.5em;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+        .hero p {
+            font-size: 1.5em;
+            font-weight: 400;
+            margin-bottom: 30px;
+        }
+        .hero .btn {
+            background-color: #e50914;
+            color: #fff;
+            padding: 12px 24px;
+            font-size: 1.2em;
+            font-weight: 600;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .hero .btn:hover {
+            background-color: #f40612;
+            transform: scale(1.05);
+        }
+        .fade-bottom {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 150px;
+            background: linear-gradient(180deg, transparent, rgba(20,20,20,0.61), #141414);
+        }
+
+        section {
+            padding: 60px 60px;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        section h2 {
+            font-size: 2em;
+            margin-bottom: 15px;
+            color: #e50914;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+        }
+        .row {
+            display: flex;
+            overflow-x: auto;
+            gap: 15px;
+            padding-bottom: 20px;
+        }
+        .card {
+            min-width: 280px;
+            background-color: #222;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            position: relative;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        .card:hover {
+            transform: scale(1.08) translateY(-10px);
+            z-index: 10;
+            box-shadow: 0 8px 16px rgba(229,9,20,0.3);
+        }
+        .card-content {
+            padding: 20px;
+        }
+        .card h3 {
+            font-size: 1.4em;
+            margin-bottom: 12px;
+            color: #fff;
+        }
+        .card p, .card ul {
+            font-size: 1em;
+            opacity: 0.9;
+        }
+        .card ul {
+            list-style: none;
+            padding: 0;
+        }
+        .card li {
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 15px;
+        }
+        .card li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #e50914;
+        }
+
+        footer {
+            background-color: #141414;
+            color: #757575;
+            text-align: center;
+            padding: 50px 60px;
+            border-top: 8px solid #303030;
+        }
+        footer a {
+            color: #757575;
+            text-decoration: none;
+            margin: 0 15px;
+            transition: color 0.3s;
+        }
+        footer a:hover {
+            color: #fff;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header, section {
+                padding: 20px;
+            }
+            .hero {
+                padding: 0 20px;
+            }
+            .hero h1 {
+                font-size: 2.5em;
+            }
+            .hero p {
+                font-size: 1.2em;
+            }
+            .hero .profile-img {
+                width: 200px;
+                height: 200px;
+            }
+            .row {
+                gap: 10px;
+            }
+            .card {
+                min-width: 220px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">Beatriz</div>
+        <nav>
+            <a href="#resumo">Resumo</a>
+            <a href="#habilidades">Habilidades</a>
+            <a href="#experiencias">Experiências</a>
+            <a href="#projetos">Projetos</a>
+        </nav>
+    </header>
+
+    <div class="hero">
+        <div class="hero-content">
+            <img src="https://media.licdn.com/dms/image/v2/D5603AQHj_DGnoEIrog/profile-displayphoto-scale_400_400/B56Ze8UHXFG0Ak-/0/1751211080068?e=1759363200&v=beta&t=ppz_c04YlsH4O-vlKnyfHEpPzcd0F90ldjgTUXHAH4A" alt="Beatriz Silva Santos" class="profile-img">
+            <h1>Beatriz Silva Santos</h1>
+            <p>Estudante de Análise e Desenvolvimento de Sistemas | Desenvolvedora em Ascensão</p>
+            <a href="https://linkedin.com/in/beatriz-silva-santos-419339235" class="btn">LinkedIn</a>
+        </div>
+        <div class="fade-bottom"></div>
+    </div>
+
+    <section id="resumo">
+        <h2>Resumo - Minha Trajetória</h2>
+        <p>Sou estudante de Análise e Desenvolvimento de Sistemas pela FATEC de Praia Grande, com formação anterior em Letras e Pedagogia. Experiência em desenvolvimento web, análise de dados, Power BI, Python, Java e SQL. Intercâmbio na Irlanda em 2025. Interesse em IA e Machine Learning. Busco oportunidades em times colaborativos com impacto social.</p>
+    </section>
+
+    <section id="habilidades">
+        <h2>Habilidades - Meu Catálogo</h2>
+        <div class="row">
+            <div class="card">
+                <div class="card-content">
+                    <h3>Técnicas</h3>
+                    <ul>
+                        <li>HTML, CSS, JavaScript</li>
+                        <li>PHP, React Native</li>
+                        <li>Java, Python</li>
+                        <li>SQL, Power BI</li>
+                        <li>GitHub, Figma</li>
+                        <li>IA, NLP</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-content">
+                    <h3>Interpessoais</h3>
+                    <ul>
+                        <li>Comunicação clara</li>
+                        <li>Trabalho em equipe</li>
+                        <li>Resolução de problemas</li>
+                        <li>Adaptabilidade</li>
+                        <li>Aprendizado contínuo</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-content">
+                    <h3>Idiomas</h3>
+                    <ul>
+                        <li>Inglês: A2-B1</li>
+                        <li>Espanhol: A1</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-content">
+                    <h3>Certificações</h3>
+                    <ul>
+                        <li>Power BI (72h)</li>
+                        <li>Python (96h)</li>
+                        <li>Bancos de Dados (200h)</li>
+                        <li>IA e Machine Learning (autodidata)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experiencias">
+        <h2>Experiências - Meus Capítulos</h2>
+        <div class="row">
+            <div class="card">
+                <div class="card-content">
+                    <h3>Assistente Administrativa</h3>
+                    <p>2017-2019</p>
+                    <ul>
+                        <li>Organização Excel</li>
+                        <li>Atendimento</li>
+                        <li>Relatórios</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-content">
+                    <h3>Professora de Português</h3>
+                    <p>2019-2020</p>
+                    <ul>
+                        <li>Planejamento</li>
+                        <li>Comunicação</li>
+                        <li>Liderança</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-content">
+                    <h3>Intercâmbio Irlanda</h3>
+                    <p>2025</p>
+                    <ul>
+                        <li>Inglês Intensivo</li>
+                        <li>Autonomia</li>
+                        <li>Networking</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-content">
+                    <h3>Voluntária</h3>
+                    <p>2022-2025</p>
+                    <ul>
+                        <li>Inclusão Social</li>
+                        <li>Desenvolvimento Local</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projetos">
+        <h2>Projetos - Minhas Criações</h2>
+        <div class="row">
+            <div class="card">
+                <div class="card-content">
+                    <h3>Apps React Native</h3>
+                    <p>Desenvolvimento mobile.</p>
+                    <a href="https://github.com/BeatrizS97/Aplicativos_de_Mobile" style="color: #e50914;">Ver no GitHub</a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-content">
+                    <h3>Projeto Engenharia</h3>
+                    <p>Front-end acessível.</p>
+                    <a href="https://beatrizs97.github.io/Projeto-Lab-Engenharia/" style="color: #e50914;">Ver Projeto</a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-content">
+                    <h3>Publicação Científica</h3>
+                    <p>Inovação e Inclusão.</p>
+                    <a href="https://doi.org/10.5281/zenodo.15477654" style="color: #e50914;">DOI</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Beatriz Silva Santos. Todos os direitos reservados.</p>
+        <div>
+            <a href="https://linkedin.com/in/beatriz-silva-santos-419339235">LinkedIn</a>
+            <a href="https://github.com/BeatrizS97">GitHub</a>
+        </div>
+    </footer>
+
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scrolling for nav links
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                target.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        // Section fade-in on scroll
+        const sections = document.querySelectorAll('section');
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+
+</body>
+</html>
