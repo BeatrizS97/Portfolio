@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfólio - Detalhes de Cursos e Certificações</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --netflix-red: #E50914;
+            --netflix-black: #000000;
+            --netflix-dark-gray: #141414;
+            --netflix-white: #FFFFFF;
+            --netflix-gray: #b3b3b3;
+        }
+        body {
+            background: linear-gradient(90deg, #000 0%, #181818 100%);
+            color: var(--netflix-white);
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 32px;
+            background: rgba(20, 20, 20, 0.98);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-sizing: border-box;
+            box-shadow: 0 2px 12px 0 rgba(0,0,0,0.7);
+        }
+        .navbar .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--netflix-red);
+            letter-spacing: 2px;
+            text-shadow: 0 2px 8px #000;
+        }
+        .navbar nav a {
+            color: var(--netflix-white);
+            margin-left: 28px;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: color 0.3s;
+            position: relative;
+        }
+        .navbar nav a::after {
+            content: "";
+            display: block;
+            width: 0;
+            height: 2px;
+            background: var(--netflix-red);
+            transition: width 0.3s;
+            position: absolute;
+            left: 0;
+            bottom: -4px;
+        }
+        .navbar nav a:hover {
+            color: var(--netflix-red);
+        }
+        .navbar nav a:hover::after {
+            width: 100%;
+        }
+        .details-hero {
+            min-height: 60vh;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding: 120px 0 40px 0;
+            background: linear-gradient(120deg, #181818 60%, #000 100%);
+            position: relative;
+            overflow: visible;
+        }
+        .details-flex {
+            display: flex;
+            width: 100%;
+            max-width: 1200px;
+            align-items: flex-start;
+            gap: 60px;
+            padding: 0 40px;
+            position: relative;
+            z-index: 2;
+        }
+        .details-content {
+            flex: 2;
+            background: rgba(0,0,0,0.92);
+            border-radius: 18px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.8);
+            padding: 38px 38px 32px 38px;
+            position: relative;
+            z-index: 2;
+            animation: fadeIn 1.2s;
+            min-width: 320px;
+            max-width: 600px;
+        }
+        .details-title {
+            font-size: 2.0rem;
+            font-weight: 900;
+            margin-bottom: 14px;
+            color: var(--netflix-white);
+            text-shadow: 0 6px 18px rgba(0, 0, 0, 0.9);
+            letter-spacing: 1px;
+        }
+        .details-description {
+            font-size: 1.0rem;
+            margin-bottom: 18px;
+            color: var(--netflix-gray);
+            line-height: 1.7;
+        }
+        .details-tags {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 18px;
+        }
+        .details-tag {
+            background: #222;
+            color: #fff;
+            border-radius: 4px;
+            padding: 4px 10px;
+            font-size: 0.90rem;
+            font-weight: 500;
+        }
+        .details-list {
+            margin: 8px 0 0 20px;
+            font-size: 1.0rem;
+        }
+        .details-list strong {
+            color: var(--netflix-red);
+            font-weight: 700;
+        }
+        .details-buttons {
+            margin-top: 22px;
+        }
+        .details-buttons button {
+            padding: 10px 22px;
+            margin-right: 18px;
+            border: none;
+            border-radius: 7px;
+            font-size: 1.0rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 14px rgba(0, 0, 0, 0.35);
+        }
+        .btn-play {
+            background: var(--netflix-red);
+            color: var(--netflix-white);
+        }
+        .btn-play:hover {
+            background: #c11119;
+            transform: translateY(-2px) scale(1.04);
+            box-shadow: 0 4px 18px rgba(229, 9, 20, 0.5);
+        }
+        .details-carousel {
+            flex: 1;
+            min-width: 260px;
+            max-width: 340px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+        .carousel-title {
+            font-size: 1.0rem;
+            font-weight: bold;
+            color: var(--netflix-white);
+            margin-bottom: 8px;
+            margin-left: 6px;
+            letter-spacing: 0.5px;
+        }
+        .carousel {
+            display: flex;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            gap: 18px;
+            padding: 6px 0;
+            scroll-snap-type: x mandatory;
+        }
+        .carousel::-webkit-scrollbar {
+            display: none;
+        }
+        .carousel-item {
+            flex: 0 0 auto;
+            width: 140px;
+            height: 105px;
+            background-size: cover !important;
+            background-position: center !important;
+            background-repeat: no-repeat !important;
+            border-radius: 10px;
+            position: relative;
+            aspect-ratio: 4 / 3; /* Proporção comum para imagens */
+            transition: transform 0.3s, box-shadow 0.3s;
+            scroll-snap-align: start;
+            cursor: pointer;
+            box-shadow:
+                0 2px 8px 0 rgba(229,9,20,0.12),
+                0 2px 12px 0 rgba(255,255,255,0.06);
+            overflow: hidden;
+        }
+        .carousel-item.curso4-item {
+            background-repeat: no-repeat !important;
+            background-position: center !important;
+            background-size: contain !important; /* ajusta sem cortar */
+        }
+        .carousel-item:hover {
+            transform: scale(1.09);
+            z-index: 2;
+            box-shadow:
+                0 4px 16px 0 rgba(229,9,20,0.16),
+                0 4px 24px 0 rgba(255,255,255,0.13);
+        }
+        .carousel-item .overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.88), transparent 80%);
+            padding: 8px 8px 6px 8px;
+            color: var(--netflix-white);
+            font-size: 0.75rem;
+            font-weight: 500;
+            min-height: 32px;
+            text-shadow: 0 2px 8px #000;
+        }
+        @media (max-width: 1100px) {
+            .details-flex {
+                flex-direction: column;
+                gap: 30px;
+                padding: 0 18px;
+            }
+            .details-content {
+                padding: 24px 14px 18px 14px;
+            }
+            .details-title {
+                font-size: 1.1rem;
+            }
+            .details-carousel {
+                flex-direction: row;
+                max-width: 100%;
+                gap: 18px;
+            }
+        }
+        @media (max-width: 700px) {
+            .navbar {
+                flex-direction: column;
+                padding: 10px 6px;
+            }
+            .navbar nav a {
+                margin-left: 10px;
+                font-size: 0.75rem;
+            }
+            .details-flex {
+                flex-direction: column;
+                gap: 18px;
+                padding: 0 6px;
+            }
+            .details-content {
+                padding: 14px 6px 10px 6px;
+            }
+            .details-title {
+                font-size: 1.0rem;
+            }
+            .details-description {
+                font-size: 0.8rem;
+            }
+            .details-carousel {
+                flex-direction: row;
+                max-width: 100%;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">B.S</div>
+        <nav>
+            <a href="main.html">Início</a>
+            <a href="main.html#cursos">Cursos</a>
+            <a href="main.html#atividades">Atividades</a>
+            <a href="main.html#idiomas">Idiomas</a>
+            <a href="main.html#intercambio">Intercâmbio</a>
+        </nav>
+    </div>
+
+    <section class="details-hero" aria-label="Detalhes do Curso/Certificação">
+        <div class="details-flex" id="detailsContainer">
+            <!-- Conteúdo dinâmico via JS -->
+        </div>
+    </section>
+
+    <script>
+        // Dados organizados apenas para cursos, atividades, idiomas e intercâmbio
+        const data = {
+            course: {
+                items: {
+                    1: {
+                        title: 'Fundamentos de Banco de Dados',
+                        image: '/images/curso1.jpg',
+                        description: 'Curso de Fundamentos de Banco de Dados - Fatec Jundiaí. Aborda conceitos essenciais de bancos de dados relacionais, modelagem, SQL, normalização e práticas de projeto.',
+                        status: 'Em andamento',
+                        carga: '200h',
+                        instituicoes: 'IFRS',
+                        conteudo: [
+                            'Introdução a bancos de dados',
+                            'Modelagem conceitual (DER)',
+                            'Modelagem lógica e física',
+                            'Linguagem SQL (DDL, DML, DQL)',
+                            'Consultas com JOINs e funções de grupo',
+                            'Normalização de dados',
+                            'Integridade referencial e restrições',
+                            'Práticas de projeto de banco de dados'                        ],
+                        fotos: [
+                            '/images/curso1.jpg',
+                            '/images/curso1b.jpg',
+                            '/images/curso1c.jpg'
+                        ],
+                        episodios: [
+                            { title: 'Modelagem de Dados', image: '/images/ep1.jpg', desc: 'Entendendo DER e relacionamentos.' },
+                            { title: 'SQL na Prática', image: '/images/ep2.jpg', desc: 'Consultas, filtros e junções.' }
+                        ],
+                        extras: [
+                            { title: 'Certificado', image: '/images/certificado1.jpg', desc: 'Certificação nacional.' }
+                        ]
+                    },
+                    2: {
+                        title: 'Curso de Python',
+                        image: '/images/curso2.jpg',
+                        description: 'Curso de Python - Em andamento - Do básico ao avançado - Fatec Jundiaí, Fatec Sorocaba e Huawei Brasil (96h). Conteúdos: lógica de programação, estruturas de controle, funções, orientação a objetos, manipulação de arquivos, bibliotecas padrão, tratamento de exceções e introdução a aplicações práticas em ciência de dados e automação.',
+                        status: 'Em andamento',
+                        carga: '96h',
+                        instituicoes: 'Fatec Jundiaí / Sorocaba / Huawei Brasil',
+                        conteudo: [
+                            'Lógica de programação',
+                            'Estruturas de controle',
+                            'Funções',
+                            'Orientação a objetos',
+                            'Manipulação de arquivos',
+                            'Bibliotecas padrão',
+                            'Tratamento de exceções',
+                            'Introdução à ciência de dados e automação'
+                        ],
+                        fotos: [
+                            '/images/curso2.jpg',
+                            '/images/curso2b.jpg',
+                            '/images/curso2c.jpg'
+                        ],
+                        episodios: [
+                            { title: 'Lógica', image: '/images/ep3.jpg', desc: 'Fundamentos de lógica.' },
+                            { title: 'POO', image: '/images/ep4.jpg', desc: 'Orientação a objetos.' }
+                        ],
+                        extras: [
+                            { title: 'Certificado', image: '/images/certificado2.jpg', desc: 'Certificado em andamento.' }
+                        ]
+                    },
+                    3: {
+                        title: 'Curso de Power BI para Business Intelligence e Data Science',
+                        image: '/images/curso3.jpg',
+                        description: 'Curso de Power BI - Data Science Academy (72h). Aborda conceitos e práticas de Business Intelligence, dashboards interativos, análise de dados e integração com diferentes fontes para suporte a decisões baseadas em dados.',
+                        status: 'Concluído',
+                        carga: '72h',
+                        instituicoes: 'Data Science Academy',
+                        conteudo: [
+                            'Fundamentos de Business Intelligence',
+                            'Conexão e transformação de dados (Power Query)',
+                            'Modelagem de dados',
+                            'DAX (Data Analysis Expressions)',
+                            'Criação de dashboards e relatórios interativos',
+                            'Visualizações avançadas',
+                            'Integração com múltiplas fontes de dados',
+                            'Publicação e compartilhamento no Power BI Service'
+                        ],
+                        fotos: [
+                            '/images/curso3.jpg',
+                            '/images/curso3b.jpg',
+                            '/images/curso3c.jpg'
+                        ],
+                        episodios: [
+                            { title: 'Mini Projeto 1', image: '/images/ep3.jpg', desc: 'Primeiros passos.' },
+                            { title: 'Modelagem e DAX', image: '/images/ep4.jpg', desc: 'Criando modelos e medidas.' }
+                        ],
+                        extras: [
+                            { title: 'Certificado', image: '/images/certificado3.jpg', desc: 'Certificado.' }
+                        ]
+                    },
+                    4: {
+                        title: 'Fundamentos de Inteligência Artificial',
+                        image: '/images/curso4.jpg',
+                        description: 'Curso de Fundamentos de Inteligência Artificial (IBM). Introduz os conceitos básicos de IA, incluindo aprendizado de máquina, deep learning, processamento de linguagem natural e aplicações práticas. Curso em andamento.',
+                        status: 'Em andamento',
+                        carga: '30hr', 
+                        instituicoes: 'IBM / Coursera',
+                        conteudo: [
+                            'Introdução à Inteligência Artificial',
+                            'História e aplicações da IA',
+                            'Aprendizado de Máquina e Deep Learning',
+                            'Processamento de Linguagem Natural (NLP)',
+                            'Visão Computacional',
+                            'Ética e impactos sociais da IA',
+                            'Casos de uso em negócios e indústria'
+                        ],
+                        fotos: [
+                            '/images/curso4.jpg',
+                            '/images/curso4b.jpg'
+                        ],
+                        episodios: [
+                            { title: 'Introdução à IA', image: '/images/ep4-1.jpg', desc: 'Primeiros conceitos e histórico.' },
+                            { title: 'Aplicações práticas', image: '/images/ep4-2.jpg', desc: 'IA em negócios e indústria.' }
+                        ],
+                        extras: [
+                            { title: 'Certificado (em andamento)', image: '/images/certificado4.jpg', desc: 'Certificado disponível após conclusão.' }
+                        ]
+                    }
+                }
+            },
+
+            idioma: {
+                items: {
+                    1: {
+                        title: 'Inglês',
+                        image: '/images/certificado-intercambio1.jpg',
+                        description: 'Nível atual: B1 (intermediário). Compreensão de leitura, escrita e audição sólidas, com foco em aprimorar conversação.',
+                        status: 'Em andamento',
+                        instituicoes: 'ISI Dublin',
+                        conteudo: [
+                            'Conversação diária',
+                            'Gramática intermediária',
+                            'Produção de textos acadêmicos',
+                            'Listening com filmes e podcasts'
+                        ],
+                        fotos: ['/images/ingles.jpg'],
+                        extras: [{ title: 'Certificado A2', image: '/images/certificado-intercambio1.jpg', desc: 'Emitido pela ISI Dublin.' }]
+                    },
+                    2: {
+                        title: 'Espanhol',
+                        image: '/images/espanhol.jpg',
+                        description: 'Nível atual: A2 (básico). Em evolução para comunicação prática e escrita acadêmica.',
+                        status: 'Em andamento',
+                        conteudo: [
+                            'Vocabulário básico',
+                            'Frases de uso cotidiano',
+                            'Compreensão oral',
+                            'Produção escrita simples'
+                        ],
+                        fotos: ['/images/espanhol.jpg']
+                    }
+                }
+            },
+
+            atividade: {
+                items: {
+                    1: {
+                        title: 'Voluntária - Associação Pedra que Canta',
+                        image: '/images/atividade1.jpg',
+                        description: 'Atuação voluntária desde 2022 em atividades culturais e comunitárias voltadas à inclusão social, integração e desenvolvimento local. Envolvimento em ações de apoio à comunidade, oficinas, eventos e mentorias para jovens.',
+                        status: 'Em andamento (2022–2025)',
+                        conteudo: [
+                            'Apoio em atividades culturais',
+                            'Promoção da inclusão social',
+                            'Participação em eventos comunitários',
+                            'Mentoria e integração de jovens',
+                            'Contribuição para o desenvolvimento local'
+                        ],
+                        fotos: [
+                            '/images/atividade1.jpg',
+                            '/images/atividade1b.jpg'
+                        ],
+                        episodios: [
+                            { title: 'Oficinas culturais', image: '/images/ep-atividade1.jpg', desc: 'Atividades artísticas e educativas.' },
+                            { title: 'Eventos comunitários', image: '/images/ep-atividade2.jpg', desc: 'Ações de integração social.' }
+                        ],
+                        extras: [
+                            { title: 'Reconhecimento local', image: '/images/extras-atividade1.jpg', desc: 'Participação destacada em projetos sociais.' }]
+                    }
+                  }
+                },
+
+            intercambio: {
+                items: {
+                1: {
+                        title: 'Intercâmbio Cultural - Dublin (Irlanda)',
+                        image: '/images/experiencia1.jpg',
+                        description: 'Intercâmbio de 30 dias em Dublin - Irlanda: ISI Dublin - English Language School (Jul - Ago 2025). Curso intensivo de inglês (nível A2), com foco em comunicação oral e escrita acadêmica. Desenvolvimento de autonomia, adaptação e networking multicultural. Experiência voltada ao aprimoramento do idioma, networking internacional e contato com diferentes culturas.',
+                        status: 'Concluído',
+                        instituicoes: 'ISI Dublin - English Language School',
+                        carga: '120h',
+                        conteudo: [
+                            'Curso intensivo de inglêS (nível A2, 30h/semana)',
+                            'Foco em comunicação oral e escrita acadêmica',
+                            'Imersão cultural e turismo local',
+                            'Networking internacional e multicultural',
+                            'Desenvolvimento de soft skills, autonomia e adaptação'
+                        ],
+                        fotos: [
+                            '/images/experiencia1.jpg',
+                            '/images/experiencia1b.jpg'
+                        ],
+                        episodios: [
+                            { title: 'Primeira semana', image: '/images/ep-exp1.jpg', desc: 'Adaptação, aulas e primeiros passeios culturais.' },
+                            { title: 'Explorando Dublin', image: '/images/ep-exp2.jpg', desc: 'Visitas a pontos turísticos e imersão cultural.' },
+                            { title: 'Networking internacional', image: '/images/ep-exp3.jpg', desc: 'Conexão com estudantes de diferentes países.' }
+                        ],
+                        extras: [
+                            { title: 'Certificado ISI Dublin', image: '/images/certificado-intercambio1.jpg', desc: 'Certificação do curso intensivo de inglês.' }
+                        ]
+                    }   
+                }
+            }
+        };
+
+        // Função utilitária para obter parâmetros da URL
+        function getUrlParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+
+        // Função para renderizar carrosseis
+        function renderCarousel(title, items, key = 'image', overlayKey = 'title') {
+            if (!items || !items.length) return '';
+            return `
+                <div>
+                    <div class="carousel-title">${title}</div>
+                    <div class="carousel">
+                        ${items.map(item => `
+                            <div class="carousel-item" style="background-image:url('${item[key] || item}');">
+                                <div class="overlay">${item[overlayKey] || ''}</div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderDetails(item) {
+            // Gera as tags de status, carga horária e instituições
+            let tags = '';
+            if (item.status) tags += `<span class="details-tag">${item.status}</span>`;
+            if (item.carga) tags += `<span class="details-tag">${item.carga}</span>`;
+            if (item.instituicoes) tags += `<span class="details-tag">${item.instituicoes}</span>`;
+
+            let conteudoList = '';
+            if (item.conteudo && item.conteudo.length) {
+                conteudoList = `<div style="margin-bottom: 18px;">
+                    <strong>Conteúdo:</strong>
+                    <ul class="details-list">
+                        ${item.conteudo.map(c => `<li>${c}</li>`).join('')}
+                    </ul>
+                </div>`;
+            }
+        
+        // Renderiza o HTML completo dos detalhes
+        return `
+                <div class="details-content">
+                    <div class="details-title">${item.title}</div>
+                    <div class="details-description">${item.description}</div>
+                    <div class="details-tags">${tags}</div>
+                    ${conteudoList}
+                    <div class="details-buttons">
+                        <button class="btn-play" onclick="window.location.href='main.html#${getUrlParam('type')}s'" aria-label="Voltar">Voltar</button>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Renderiza os detalhes com base nos parâmetros da URL
+        window.onload = function() {
+            const type = getUrlParam('type') || 'course';
+            const id = getUrlParam('id') || '1';
+
+            const category = data[type] || data.course;
+            const item = category.items[id] || Object.values(category.items)[0];
+
+            const detailsContainer = document.getElementById('detailsContainer');
+            let html = `
+                ${renderDetails(item)}
+                <div class="details-carousel">
+                    ${renderCarousel('Fotos', item.fotos || [], undefined, undefined)}
+                    ${renderCarousel('Extras', item.extras || [], 'image', 'title')}
+                </div>
+            `;
+            detailsContainer.innerHTML = html;
+        };
+    </script>
+</body>
