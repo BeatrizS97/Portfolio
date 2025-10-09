@@ -1,11 +1,8 @@
 # Beatriz Silva Santos: Portfólio Dev 🚀
 
-<div align="justify">
-  
-![Netflix Red](https://img.shields.io/badge/Netflix-Inspired-E50914?style=for-the-badge&logo=netflix&logoColor=white)  
-![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)  
-![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)  
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)  
+<div align="center">
+
+![Netflix Red](https://img.shields.io/badge/Netflix-Inspired-E50914?style=for-the-badge&logo=netflix&logoColor=white) ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white) ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white) ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
 
 </div>
 
@@ -80,8 +77,8 @@ Estou sempre evoluindo – como uma temporada nova!
 Quer colaborar ou discutir tech? Me encontre aqui:
 
 <div align="center">
-  [![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/BeatrizS97)  
-  [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/beatriz-silva-santos-419339235)  
+  [![GitHub](https://tm.ibxk.com.br/2025/09/09/09124749720211.jpg)](https://github.com/BeatrizS97)  
+  [![LinkedIn](https://w7.pngwing.com/pngs/197/39/png-transparent-social-media-computer-icons-social-network-linkedin-social-media-text-trademark-logo.png)](https://www.linkedin.com/in/beatriz-silva-santos-419339235)  
 </div>
 
 **Obrigada por assistir!** Deixe uma ⭐ se curtiu o vibe – quem sabe vira uma collab? 🍿
