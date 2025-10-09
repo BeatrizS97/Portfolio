@@ -21,7 +21,10 @@ Bem-vindo ao meu espaço digital – onde código encontra storytelling. Inspira
 
 <hr>
 
+<div align="center">
+
 ## 🎥 Em Ação: Veja o Movimento!
+</div>
 
 Role pelos carrosséis, sinta o glow vermelho no hover e os ícones dançando no hero. É tech com alma cinematográfica!
 
@@ -32,7 +35,9 @@ Role pelos carrosséis, sinta o glow vermelho no hover e os ícones dançando no
   <p><em>Meu portfólio ganhando vida – clique para o GIF full! (Substitua pelo seu GIF real)</em></p>
 </div>
 
+<div align="center">
 ## 🚀 O Que Você Encontra Aqui
+</div>
 
 - **Hero Imersivo**: Minha bio, links sociais (LinkedIn, GitHub, ORCID) e CTAs que te levam direto aos projetos – com ícones de tech "caindo" como uma chuva de inspiração.
 - **Carrosséis Dinâmicos**: 
@@ -50,18 +55,21 @@ Role pelos carrosséis, sinta o glow vermelho no hover e os ícones dançando no
 
 <hr>
 
+<div align="center">
+
 ## 🛠️ Tech Por Trás da Cortina
 
 | Frontend | Estilo & Movimento | Ferramentas |
 |----------|--------------------|-------------|
 | ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white) | ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css3&logoColor=white) <br> Vars CSS (--netflix-red), @keyframes (icons-fall, shine) | ![Tailwind](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=flat&logo=tailwind-css&logoColor=white) <br> CDN para agilidade |
 | ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black) | Vanilla JS: Scroll suave, lazy load, botões condicionais | ![Font Awesome](https://img.shields.io/badge/Font_Awesome-339AF0?style=flat&logo=fontawesome&logoColor=white) <br> Ícones que brilham |
+</div>
 
 - **Foco em Performance**: Sem frameworks pesados – puro e otimizado para velocidade.
 - **Customizações Pessoais**: Cores Netflix no CSS, GIFs leves nos projetos, e acessibilidade (ARIA labels) em tudo.
 
 <hr>
-
+<div align="center">
 ## 📈 Roadmap Pessoal
 
 - [x] Design dark com animações fluidas.
@@ -70,7 +78,7 @@ Role pelos carrosséis, sinta o glow vermelho no hover e os ícones dançando no
 - [ ] API GitHub para projetos auto-atualizados.
 - [ ] Vídeo hero com demo de IA.
 - [ ] Versão PWA para "instalar" meu portfólio como app.
-
+</div>
 Estou sempre evoluindo – como uma temporada nova!
 
 <hr>
@@ -80,8 +88,9 @@ Estou sempre evoluindo – como uma temporada nova!
 Quer colaborar ou discutir tech? Me encontre aqui:
 
 <div align="center">
-  [![GitHub](https://tm.ibxk.com.br/2025/09/09/09124749720211.jpg)](https://github.com/BeatrizS97)  
-  [![LinkedIn](https://w7.pngwing.com/pngs/197/39/png-transparent-social-media-computer-icons-social-network-linkedin-social-media-text-trademark-logo.png)](https://www.linkedin.com/in/beatriz-silva-santos-419339235)  
+[![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/BeatrizS97)  
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/beatriz-silva-santos-419339235)  
+
 </div>
 
 **Obrigada por assistir!** Deixe uma ⭐ se curtiu o vibe – quem sabe vira uma collab? 🍿
