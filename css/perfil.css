@@ -1,128 +1,229 @@
-  :root {
-      --netflix-red: #E50914;
-      --netflix-black: #000000;
-      --netflix-dark-gray: #141414;
-      --netflix-white: #FFFFFF;
-  }
+:root {
+    --netflix-red: #E50914;
+    --netflix-black: #000000;
+    --netflix-dark-gray: #141414;
+    --netflix-white: #FFFFFF;
+    --netflix-gray: #b3b3b3;
+}
 
-  body {
-      background: linear-gradient(to right, #000 0%, #000 60%, #141114 100%);
-      color: var(--netflix-white);
-      font-family: 'Helvetica Neue', Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      min-height: 100vh;
-  }
+body {
+    background: linear-gradient(to right, #000 0%, #000 60%, #141114 100%);
+    color: var(--netflix-white);
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
 
-  .navbar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 10px 20px;
-      background-color: rgba(0, 0, 0, 0.7);
-      position: fixed;
-      width: 100%;
-      top: 0;
-      z-index: 1000;
-      box-sizing: border-box;
-  }
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: rgba(0, 0, 0, 0.7);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-sizing: border-box;
+}
 
-  .navbar .logo {
-      font-size: 24px;
-      font-weight: bold;
-      color: var(--netflix-red);
-      width: 60px;
-      text-align: left;
-  }
+.navbar .logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--netflix-red);
+    text-align: left;
+}
 
-  .navbar nav {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex: 1;
-  }
+.hamburger {
+    display: none;
+    font-size: 1.6rem;
+    color: var(--netflix-white);
+    cursor: pointer;
+    z-index: 1101;
+}
 
-  .nav-spacer {
-      width: 60px;
-  }
+.navbar nav {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
 
-  .navbar nav a {
-      color: var(--netflix-white);
-      margin-left: 20px;
-      text-decoration: none;
-      font-size: 0.9rem;
-      transition: color 0.3s;
-      align-items: center;
-  }
+.navbar nav a {
+    color: var(--netflix-white);
+    margin-left: 20px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s;
+}
 
-  .navbar nav a:hover {
-      color: #b3b3b3;
-      align-items: center;
-  }
+.navbar nav a:hover {
+    color: var(--netflix-gray);
+}
 
-  .profile-screen {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      min-height: 100vh;
-      padding: 80px 20px 20px;
-  }
+.navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    /* Adicionado para consistência, caso exista */
+}
 
-  .profile-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      justify-content: center;
-      margin-top: 20px;
-  }
+/* ===== PERFIL ===== */
+.profile-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 100vh;
+    padding: 80px 20px 20px;
+    animation: fadeIn 0.8s ease-out;
+}
 
-  .profile-card {
-      width: 150px;
-      height: 150px;
-      background-size: cover;
-      background-position: center;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: transform 0.3s, box-shadow 0.3s;
-      display: flex;
-      align-items: flex-end;
-      padding: 10px;
-      color: var(--netflix-white);
-      background-color: #333;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-  }
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
 
-  .profile-card:hover {
-      transform: scale(1.1);
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
-  }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 
-  .manage-profiles {
-      margin-top: 20px;
-      padding: 4px 9px;
-      background-color: rgba(255, 255, 255, 0.2);
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background-color 0.3s;
-      font-size: 0.85rem;
-      /* Opcional: fonte um pouco menor */
-  }
+.profile-screen h1 {
+    font-size: clamp(1.8rem, 5vw, 3rem);
+    margin-bottom: 1.8rem;
+    font-weight: bold;
+}
 
-  .manage-profiles:hover {
-      background-color: rgba(255, 255, 255, 0.3);
-  }
+.profile-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    justify-content: center;
+    margin-top: 20px;
+}
 
-  @media (max-width: 768px) {
-      .profile-card {
-          width: 120px;
-          height: 120px;
-      }
+.profile-card {
+    width: clamp(140px, 25vw, 180px);
+    height: clamp(140px, 25vw, 180px);
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 10px;
+    color: var(--netflix-white);
+    background-color: #333;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
 
-      .navbar nav a {
-          font-size: 0.8rem;
-          margin-left: 10px;
-      }
-  }
+.profile-card:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+}
+
+.profile-card span {
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-weight: 500;
+    font-size: clamp(0.9rem, 2.5vw, 1rem);
+}
+
+.manage-profiles {
+    margin-top: 25px;
+    padding: 8px 16px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    font-size: clamp(0.85rem, 2vw, 1rem);
+    font-weight: 500;
+}
+
+.manage-profiles:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    transform: scale(1.05);
+}
+
+/* Menu lateral (versão mobile) padronizado igual main */
+@media (max-width: 900px) {
+    .hamburger {
+        display: block;
+        font-size: 1.6rem;
+        color: var(--netflix-white);
+        cursor: pointer;
+        z-index: 1101;
+    }
+
+    .navbar nav,
+    #nav-menu {
+        position: fixed;
+        top: 60px;
+        right: -100%;
+        background: rgba(0, 0, 0, 0.95);
+        height: auto;
+        min-height: 60px;
+        width: 250px;
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+        gap: 20px;
+        transition: right 0.4s ease-in-out;
+        box-shadow: -3px 0 10px rgba(0, 0, 0, 0.6);
+        max-height: calc(100vh - 60px);
+        /* opcional: nunca ultrapassa a tela */
+        overflow-y: auto;
+        /* opcional: rolagem se necessário */
+        z-index: 1099;
+        align-items: flex-start;
+    }
+
+    .navbar nav.active,
+    #nav-menu.active {
+        right: 0;
+    }
+
+    .navbar nav a,
+    #nav-menu a {
+        font-size: 1.1rem;
+        /* igual main */
+        margin: 0;
+        color: var(--netflix-gray);
+        text-align: left;
+    }
+
+    .navbar nav a:hover,
+    #nav-menu a:hover {
+        color: var(--netflix-red);
+    }
+
+    .navbar-right {
+        display: none;
+    }
+}
+
+@media (max-width: 500px) {
+
+    .navbar nav a,
+    #nav-menu a {
+        font-size: 0.8rem;
+        /* igual main */
+    }
+}
+
+@media (max-width: 400px) {
+
+    .navbar nav a,
+    #nav-menu a {
+        font-size: 0.9rem;
+        /* igual main */
+    }
+}

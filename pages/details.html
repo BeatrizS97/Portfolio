@@ -6,19 +6,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfólio - Detalhes de Cursos e Certificações</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
     <link rel="stylesheet" href="../css/details.css">
 </head>
 
 <body>
     <div class="navbar">
         <div class="logo">B.S</div>
-        <nav>
-            <a href="main.html">Início</a>
-            <a href="main.html#cursos">Cursos</a>
-            <a href="main.html#atividades">Atividades</a>
-            <a href="main.html#idiomas">Idiomas</a>
-            <a href="main.html#intercambio">Intercâmbio</a>
+
+        <!-- Botão de hambúrguer (aparece em telas menores) -->
+        <div class="hamburger" id="hamburger">
+            <i class="fas fa-bars"></i>
+        </div>
+
+        <nav id="nav-menu">
+            <a href="#hero">Início</a>
+            <a href="#habilidades-tecnicas">Habilidades Técnicas</a>
+            <a href="#soft-skills">Soft Skills</a>
+            <a href="#cursos">Cursos e Certificações</a>
+            <a href="#atividades">Atividades Complementares</a>
+            <a href="#idiomas">Idiomas</a>
+            <a href="#publicacoes">Publicações Científicas</a>
+            <a href="#projetos">Projetos no GitHub</a>
+            <a href="#experiencia-internacional">Experiência Internacional</a>
         </nav>
+
+        <div class="navbar-right"></div>
     </div>
 
     <section class="details-hero" aria-label="Detalhes do Curso/Certificação">
@@ -28,3 +41,5 @@
     </section>
     <script src="../js/details.js"></script>
 </body>
+
+</html>

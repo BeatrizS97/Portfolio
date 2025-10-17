@@ -15,6 +15,14 @@
             overflow-x: hidden;
         }
 
+        .hamburger {
+            display: none;
+            font-size: 1.6rem;
+            color: var(--netflix-white);
+            cursor: pointer;
+            z-index: 1101;
+        }
+
         .navbar {
             display: flex;
             justify-content: space-between;
@@ -533,19 +541,115 @@
             right: -30px;
         }
 
+        /* Menu lateral (versão mobile) */
+        /* ==================== */
+        /* 📱 RESPONSIVIDADE */
+        /* ==================== */
+
+        /* === Até 900px (ativar menu hambúrguer e ajustes gerais da navbar) === */
+        @media (max-width: 900px) {
+            .hamburger {
+                display: block;
+                font-size: 1.6rem;
+                color: var(--netflix-white);
+                cursor: pointer;
+                z-index: 1100;
+            }
+
+            .navbar nav {
+                position: fixed;
+                top: 60px;
+                right: -100%;
+                background: rgba(0, 0, 0, 0.95);
+                height: auto;
+                min-height: 60px;
+                width: 250px;
+                display: flex;
+                flex-direction: column;
+                padding: 20px;
+                gap: 20px;
+                transition: right 0.4s ease-in-out;
+                box-shadow: -3px 0 10px rgba(0, 0, 0, 0.6);
+                max-height: calc(100vh - 60px);
+                /* opcional: nunca ultrapassa a tela */
+                overflow-y: auto;
+                /* opcional: rolagem se necessário */
+                z-index: 1099;
+                align-items: flex-start;
+            }
+
+            .navbar nav.active {
+                right: 0;
+            }
+
+            .navbar nav a {
+                font-size: 1.1rem;
+                margin: 0;
+                color: var(--netflix-gray);
+            }
+
+            .navbar nav a:hover {
+                color: var(--netflix-red);
+            }
+
+            .navbar-right {
+                display: none;
+            }
+        }
+
+        /* === Até 768px (ajustes gerais do conteúdo principal) === */
         @media (max-width: 768px) {
             .hero-content {
                 flex-direction: column;
-                gap: 20px;
+                gap: 30px;
                 padding: 0 20px;
             }
 
+            .hero-text {
+                text-align: center;
+            }
+
+            .hero-image {
+                height: 280px;
+                max-width: 280px;
+            }
+
             .hero h1 {
-                font-size: 1.6rem;
+                font-size: 1.7rem;
             }
 
             .hero p {
-                font-size: 0.8rem;
+                font-size: 0.9rem;
+            }
+
+            .btn {
+                font-size: 0.85rem;
+                padding: 6px 12px;
+            }
+
+            .carousel-item {
+                width: 150px;
+                height: 200px;
+            }
+
+            .carousel-title {
+                font-size: 1.2rem;
+            }
+        }
+
+        /* === Até 500px (ajustes finos para telas pequenas) === */
+        @media (max-width: 500px) {
+            .hero h1 {
+                font-size: 1.4rem;
+            }
+
+            .hero p {
+                font-size: 0.75rem;
+            }
+
+            .btn {
+                font-size: 0.75rem;
+                padding: 5px 10px;
             }
 
             .hero .social-links a {
@@ -585,5 +689,34 @@
 
             .carousel-btn.right {
                 right: -15px;
+            }
+        }
+
+        /* === Até 400px (detalhes extras para celulares muito pequenos) === */
+        @media (max-width: 400px) {
+            .navbar nav {
+                width: 200px;
+            }
+
+            .navbar nav a {
+                font-size: 0.9rem;
+            }
+
+            .hero h1 {
+                font-size: 1.2rem;
+            }
+
+            .hero p {
+                font-size: 0.7rem;
+            }
+
+            .btn {
+                font-size: 0.7rem;
+                padding: 5px 10px;
+            }
+
+            .carousel-item {
+                width: 130px;
+                height: 200px;
             }
         }

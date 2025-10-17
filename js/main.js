@@ -22,6 +22,24 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
+// Menu hambúrguer para mobile
+document.addEventListener('DOMContentLoaded', () => {
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('nav-menu');
+
+    hamburger.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+        hamburger.classList.toggle('open');
+    });
+
+    // Fecha o menu quando um link é clicado
+    document.querySelectorAll('#nav-menu a').forEach(link => {
+        link.addEventListener('click', () => {
+            navMenu.classList.remove('active');
+            hamburger.classList.remove('open');
+        });
+    });
+});
 // Função para esconder botões se não precisar rolar
 function hideButtonsIfNoScroll() {
     const carousels = document.querySelectorAll('.carousel');

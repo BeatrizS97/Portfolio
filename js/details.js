@@ -1,5 +1,6 @@
 // Dados organizados apenas para cursos, atividades, idiomas e intercâmbio
 const data = {
+    // ... (mantido igual, sem alterações)
     course: {
         items: {
             1: {
@@ -288,3 +289,22 @@ window.onload = function () {
             `;
     detailsContainer.innerHTML = html;
 };
+
+// ===== MENU HAMBÚRGUER (copiado EXATAMENTE do main.js) =====
+document.addEventListener('DOMContentLoaded', () => {
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('nav-menu');
+
+    hamburger.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+        hamburger.classList.toggle('open');
+    });
+
+    // Fecha o menu quando um link é clicado
+    document.querySelectorAll('#nav-menu a').forEach(link => {
+        link.addEventListener('click', () => {
+            navMenu.classList.remove('active');
+            hamburger.classList.remove('open');
+        });
+    });
+});
