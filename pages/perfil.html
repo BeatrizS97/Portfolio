@@ -11,41 +11,49 @@
 </head>
 
 <body>
-    <div class="navbar">
-        <div class="logo">B.S</div>
+    <!-- Cabeçalho fixo com navegação -->
+    <header class="navbar">
+        <!-- Logo da marca -->
+        <h1 class="logo">B.S</h1>
 
-            <!-- Botão de hambúrguer (aparece em telas menores) -->
-            <div class="hamburger" id="hamburger">
-                <i class="fas fa-bars"></i>
-            </div>
+        <!-- Botão para abrir menu mobile -->
+        <button class="hamburger" id="hamburger" aria-label="Menu de navegação" aria-expanded="false">
+            <i class="fas fa-bars"></i>
+        </button>
 
-            <nav id="nav-menu">
-                <a href="#hero">Início</a>
-                <a href="#habilidades-tecnicas">Habilidades Técnicas</a>
-                <a href="#soft-skills">Soft Skills</a>
-                <a href="#cursos">Cursos e Certificações</a>
-                <a href="#atividades">Atividades Complementares</a>
-                <a href="#idiomas">Idiomas</a>
-                <a href="#publicacoes">Publicações Científicas</a>
-                <a href="#projetos">Projetos no GitHub</a>
-                <a href="#experiencia-internacional">Experiência Internacional</a>
-            </nav>
-    </div>
+        <!-- Menu de navegação principal -->
+        <nav id="nav-menu">
+            <a href="#hero">Início</a>
+            <a href="#habilidades-tecnicas">Habilidades Técnicas</a>
+            <a href="#soft-skills">Soft Skills</a>
+            <a href="#cursos">Cursos e Certificações</a>
+            <a href="#atividades">Atividades Complementares</a>
+            <a href="#idiomas">Idiomas</a>
+            <a href="#publicacoes">Publicações Científicas</a>
+            <a href="#projetos">Projetos no GitHub</a>
+            <a href="#experiencia-internacional">Experiência Internacional</a>
+        </nav>
+    </header>
 
-    <section class="profile-screen" aria-label="Seleção de Perfil">
-        <h1 class="text-4xl md:text-5xl font-bold mb-4">Quem está assistindo?</h1>
+    <!-- Conteúdo principal: tela de seleção de perfil -->
+    <main class="profile-screen" aria-label="Seleção de Perfil">
+        <h2 class="text-4xl md:text-5xl font-bold mb-4">Quem está assistindo?</h2>
 
-        <div class="profile-grid">
-            <div class="profile-card" style="background-image: url('../images/bibia.jpg');"
-                onclick="window.location.href='main.html'" role="button" aria-label="Perfil Beatriz">
+        <!-- Grid com os perfis disponíveis -->
+        <section class="profile-grid">
+            <!-- Card de perfil individual -->
+            <article class="profile-card" style="background-image: url('../images/bibia.jpg');"
+                onclick="window.location.href='main.html'" role="button" tabindex="0" aria-label="Perfil Beatriz">
                 <span>Beatriz ♥</span>
-            </div>
-        </div>
+            </article>
+        </section>
 
-        <div class="manage-profiles" onclick="alert('Gerenciar perfis ainda não implementado.')" role="button"
-            aria-label="Gerenciar Perfis">Gerenciar perfis</div>
-    </section>
+        <!-- Botão para gerenciar perfis -->
+        <button class="manage-profiles" onclick="alert('Gerenciar perfis ainda não implementado.')"
+            aria-label="Gerenciar Perfis">Gerenciar perfis</button>
+    </main>
 
+    <!-- Script para interatividade do menu -->
     <script src="../js/perfil.js"></script>
 </body>
 
