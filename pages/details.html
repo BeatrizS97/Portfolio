@@ -11,14 +11,17 @@
 </head>
 
 <body>
-    <div class="navbar">
-        <div class="logo">B.S</div>
+    <!-- Cabeçalho fixo com navegação -->
+    <header class="navbar">
+        <!-- Logo da marca -->
+        <h1 class="logo">B.S</h1>
 
-        <!-- Botão de hambúrguer (aparece em telas menores) -->
-        <div class="hamburger" id="hamburger">
+        <!-- Botão para abrir menu mobile -->
+        <button class="hamburger" id="hamburger" aria-label="Menu de navegação" aria-expanded="false">
             <i class="fas fa-bars"></i>
-        </div>
+        </button>
 
+        <!-- Menu de navegação principal -->
         <nav id="nav-menu">
             <a href="#hero">Início</a>
             <a href="#habilidades-tecnicas">Habilidades Técnicas</a>
@@ -31,14 +34,19 @@
             <a href="#experiencia-internacional">Experiência Internacional</a>
         </nav>
 
-        <div class="navbar-right"></div>
-    </div>
+        <!-- Espaço reservado para elementos da direita -->
+        <aside class="navbar-right" aria-label="Menu do usuário"></aside>
+    </header>
 
-    <section class="details-hero" aria-label="Detalhes do Curso/Certificação">
-        <div class="details-flex" id="detailsContainer">
-            <!-- Conteúdo dinâmico via JS -->
-        </div>
-    </section>
+    <!-- Conteúdo principal: detalhes do curso/certificação -->
+    <main class="details-hero" aria-label="Detalhes do Curso/Certificação">
+        <!-- Container dinâmico preenchido via JavaScript -->
+        <article class="details-flex" id="detailsContainer">
+            <!-- Conteúdo será injetado dinamicamente -->
+        </article>
+    </main>
+    
+    <!-- Script para carregar os detalhes e controlar o menu -->
     <script src="../js/details.js"></script>
 </body>
 
