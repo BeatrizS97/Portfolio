@@ -10,16 +10,22 @@
 </head>
 
 <body>
-    <section class="animation-section" aria-label="Animação de Introdução">
-        <div class="logo-animation" id="netflixLogo">B.S</div>
-        <div class="curtain-effect" id="curtainEffect">
-            <div class="curtain-bar" style="top: 0%; animation-delay: 0s;"></div>
-            <div class="curtain-bar" style="top: 20%; animation-delay: 0.1s;"></div>
-            <div class="curtain-bar" style="top: 40%; animation-delay: 0.2s;"></div>
-            <div class="curtain-bar" style="top: 60%; animation-delay: 0.3s;"></div>
-            <div class="curtain-bar" style="top: 80%; animation-delay: 0.4s;"></div>
-        </div>
-    </section>
+    <!-- Seção principal com animação de introdução estilo Netflix -->
+    <main class="animation-section" aria-label="Animação de Introdução">
+        <!-- Logo animado com efeito de entrada -->
+        <h1 class="logo-animation" id="netflixLogo">B.S</h1>
+        
+        <!-- Efeito de cortina com barras que deslizam -->
+        <section class="curtain-effect" id="curtainEffect" aria-hidden="true">
+            <span class="curtain-bar" style="top: 0%; animation-delay: 0s;"></span>
+            <span class="curtain-bar" style="top: 20%; animation-delay: 0.1s;"></span>
+            <span class="curtain-bar" style="top: 40%; animation-delay: 0.2s;"></span>
+            <span class="curtain-bar" style="top: 60%; animation-delay: 0.3s;"></span>
+            <span class="curtain-bar" style="top: 80%; animation-delay: 0.4s;"></span>
+        </section>
+    </main>
+    
+    <!-- Script para controlar a animação e transição para a próxima página -->
     <script src="./js/index.js"></script>
 </body>
 
