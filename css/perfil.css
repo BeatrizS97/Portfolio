@@ -16,6 +16,7 @@ body {
     overflow-x: hidden;
 }
 
+/* Navbar fixa no topo com backdrop blur para efeito glass */
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -27,49 +28,80 @@ body {
     top: 0;
     z-index: 1000;
     box-sizing: border-box;
+    backdrop-filter: blur(10px);
 }
 
+/* Logo da marca com efeito de brilho sutil */
 .navbar .logo {
     font-size: 24px;
     font-weight: bold;
     color: var(--netflix-red);
-    text-align: left;
+    text-shadow: 0 2px 10px rgba(229, 9, 20, 0.3);
 }
 
+/* Botão hamburger (oculto no desktop, visível no mobile) */
 .hamburger {
     display: none;
     font-size: 1.6rem;
     color: var(--netflix-white);
     cursor: pointer;
     z-index: 1101;
+    transition: color 0.3s ease;
 }
 
+.hamburger:hover {
+    color: var(--netflix-red);
+}
+
+/* Menu de navegação posicionado entre logo e navbar-right */
 .navbar nav {
     display: flex;
     gap: 1rem;
     align-items: center;
+    flex: 1;
+    justify-content: center;
+    margin: 0 20px;
 }
 
+/* Links de navegação com efeito de underline animado */
 .navbar nav a {
     color: var(--netflix-white);
     margin-left: 20px;
     text-decoration: none;
     font-size: 0.9rem;
-    transition: color 0.3s;
+    transition: color 0.3s, transform 0.2s;
+    position: relative;
+}
+
+/* Linha vermelha que aparece ao passar o mouse */
+.navbar nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--netflix-red);
+    transition: width 0.3s ease;
 }
 
 .navbar nav a:hover {
     color: var(--netflix-gray);
+    transform: translateY(-1px);
 }
 
+.navbar nav a:hover::after {
+    width: 100%;
+}
+
+/* Espaço reservado para elementos à direita (perfil, notificações, etc) */
 .navbar-right {
     display: flex;
     align-items: center;
     gap: 15px;
-    /* Adicionado para consistência, caso exista */
 }
 
-/* ===== PERFIL ===== */
+/* Tela de seleção de perfil centralizada verticalmente */
 .profile-screen {
     display: flex;
     flex-direction: column;
@@ -81,6 +113,7 @@ body {
     animation: fadeIn 0.8s ease-out;
 }
 
+/* Animação suave de entrada da tela */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -93,12 +126,14 @@ body {
     }
 }
 
-.profile-screen h1 {
+/* Título principal responsivo */
+.profile-screen h2 {
     font-size: clamp(1.8rem, 5vw, 3rem);
     margin-bottom: 1.8rem;
     font-weight: bold;
 }
 
+/* Grid de perfis com flexbox responsivo */
 .profile-grid {
     display: flex;
     flex-wrap: wrap;
@@ -107,6 +142,7 @@ body {
     margin-top: 20px;
 }
 
+/* Card individual de perfil com imagem de fundo */
 .profile-card {
     width: clamp(140px, 25vw, 180px);
     height: clamp(140px, 25vw, 180px);
@@ -124,11 +160,13 @@ body {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
 }
 
+/* Efeito de zoom ao passar o mouse no card */
 .profile-card:hover {
     transform: scale(1.1);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
 }
 
+/* Nome do perfil dentro do card */
 .profile-card span {
     padding: 8px 12px;
     border-radius: 5px;
@@ -136,6 +174,7 @@ body {
     font-size: clamp(0.9rem, 2.5vw, 1rem);
 }
 
+/* Botão de gerenciar perfis */
 .manage-profiles {
     margin-top: 25px;
     padding: 8px 16px;
@@ -153,8 +192,9 @@ body {
     transform: scale(1.05);
 }
 
-/* Menu lateral (versão mobile) padronizado igual main */
+/* Responsividade: menu mobile até 900px */
 @media (max-width: 900px) {
+    /* Mostrar botão hamburger em telas pequenas */
     .hamburger {
         display: block;
         font-size: 1.6rem;
@@ -163,8 +203,8 @@ body {
         z-index: 1101;
     }
 
-    .navbar nav,
-    #nav-menu {
+    /* Menu lateral deslizante da direita */
+    .navbar nav {
         position: fixed;
         top: 60px;
         right: -100%;
@@ -179,51 +219,58 @@ body {
         transition: right 0.4s ease-in-out;
         box-shadow: -3px 0 10px rgba(0, 0, 0, 0.6);
         max-height: calc(100vh - 60px);
-        /* opcional: nunca ultrapassa a tela */
         overflow-y: auto;
-        /* opcional: rolagem se necessário */
         z-index: 1099;
         align-items: flex-start;
+        /* Remove centralização no mobile */
+        transform: none;
+        left: auto;
     }
 
-    .navbar nav.active,
-    #nav-menu.active {
+    /* Menu ativo desliza para dentro da tela */
+    .navbar nav.active {
         right: 0;
     }
 
-    .navbar nav a,
-    #nav-menu a {
+    /* Links do menu mobile com estilo adaptado */
+    .navbar nav a {
         font-size: 1.1rem;
-        /* igual main */
         margin: 0;
         color: var(--netflix-gray);
         text-align: left;
     }
 
-    .navbar nav a:hover,
-    #nav-menu a:hover {
+    .navbar nav a:hover {
         color: var(--netflix-red);
     }
 
+    /* Esconder elementos da direita no mobile */
     .navbar-right {
         display: none;
     }
 }
 
-@media (max-width: 500px) {
-
-    .navbar nav a,
-    #nav-menu a {
-        font-size: 0.8rem;
-        /* igual main */
+/* Ajustes para tablets */
+@media (max-width: 768px) {
+    .navbar nav a {
+        font-size: 0.9rem;
     }
 }
 
-@media (max-width: 400px) {
+/* Ajustes para celulares */
+@media (max-width: 500px) {
+    .navbar nav a {
+        font-size: 0.8rem;
+    }
+}
 
-    .navbar nav a,
-    #nav-menu a {
+/* Ajustes para celulares muito pequenos */
+@media (max-width: 400px) {
+    .navbar nav {
+        width: 200px;
+    }
+
+    .navbar nav a {
         font-size: 0.9rem;
-        /* igual main */
     }
 }
