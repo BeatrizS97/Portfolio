@@ -12,13 +12,12 @@
 </head>
 
 <body>
-    <div class="navbar">
+    <header class="navbar">
         <div class="logo">B.S</div>
 
-        <!-- Botão hambúrguer (visível apenas no mobile) -->
-        <div class="hamburger" id="hamburger">
+        <button class="hamburger" id="hamburger" aria-label="Menu de navegação">
             <i class="fas fa-bars"></i>
-        </div>
+        </button>
 
         <nav id="nav-menu">
             <a href="#hero">Início</a>
@@ -32,245 +31,300 @@
             <a href="#experiencia-internacional">Experiência Internacional</a>
         </nav>
         
-        <div class="navbar-right">
+        <aside class="navbar-right">
             <i class="fas fa-bell" aria-label="Notificações"></i>
             <img src="../images/bibia.jpg" alt="Foto de Perfil" class="profile-pic" aria-label="Perfil">
             <i class="fas fa-caret-down" aria-label="Menu de Perfil"></i>
-        </div>
-    </div>
+        </aside>
+    </header>
 
-    <section class="hero" id="hero">
-        <div class="hero-content">
-            <div class="hero-text">
-                <h1>Beatriz Silva Santos</h1>
-                <p>Estudante de Análise e Desenvolvimento de Sistemas pela FATEC - Praia Grande, com formação anterior
-                    em Letras e Pedagogia. Apaixonada por tecnologia, com foco em front-end, back-end, full-stack,
-                    bancos de dados, análise de dados, IA e soluções escaláveis. Explore meu portfólio e conheça meus
-                    projetos!</p>
-                <div class="social-links">
-                    <a href="https://www.linkedin.com/in/beatriz-silva-santos-419339235" target="_blank"
-                        aria-label="LinkedIn de Beatriz"><i class="fab fa-linkedin"></i></a>
-                    <a href="https://github.com/BeatrizS97" target="_blank" aria-label="GitHub de Beatriz"><i
-                            class="fab fa-github"></i></a>
-                    <a href="https://doi.org/10.5281/zenodo.15477654" target="_blank" aria-label="ORCID de Beatriz"><i
-                            class="fab fa-orcid"></i></a>
+    <main>
+        <section class="hero" id="hero">
+            <article class="hero-content">
+                <div class="hero-text">
+                    <h1>Beatriz Silva Santos</h1>
+                    <p>Estudante de Análise e Desenvolvimento de Sistemas pela FATEC - Praia Grande, com formação anterior
+                        em Letras e Pedagogia. Apaixonada por tecnologia, com foco em front-end, back-end, full-stack,
+                        bancos de dados, análise de dados, IA e soluções escaláveis. Explore meu portfólio e conheça meus
+                        projetos!</p>
+                    <nav class="social-links">
+                        <a href="https://www.linkedin.com/in/beatriz-silva-santos-419339235" target="_blank"
+                            aria-label="LinkedIn de Beatriz"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://github.com/BeatrizS97" target="_blank" aria-label="GitHub de Beatriz"><i
+                                class="fab fa-github"></i></a>
+                        <a href="https://doi.org/10.5281/zenodo.15477654" target="_blank" aria-label="ORCID de Beatriz"><i
+                                class="fab fa-orcid"></i></a>
+                    </nav>
+                    <button class="btn btn-play"
+                        onclick="document.querySelector('#projetos').scrollIntoView({ behavior: 'smooth' })"
+                        aria-label="Explorar Projetos"><i class="fas fa-play"></i>&nbsp;Explorar</button>
+                    <button class="btn btn-info" onclick="window.location.href='details.html?type=profile&id=1'"
+                        aria-label="Mais Informações"><i class="fas fa-info-circle"></i>&nbsp;Mais Informações</button>
                 </div>
-                <button class="btn btn-play"
-                    onclick="document.querySelector('#projetos').scrollIntoView({ behavior: 'smooth' })"
-                    aria-label="Explorar Projetos"><i class="fas fa-play"></i>&nbsp;Explorar</button>
-                <button class="btn btn-info" onclick="window.location.href='details.html?type=profile&id=1'"
-                    aria-label="Mais Informações"><i class="fas fa-info-circle"></i>&nbsp;Mais Informações</button>
-            </div>
-            <div class="hero-image">
-                <div class="icons-bg">
-                    <i class="fab fa-html5"></i>
-                    <i class="fab fa-css3-alt"></i>
-                    <i class="fab fa-js"></i>
-                    <i class="fab fa-python"></i>
-                    <i class="fab fa-php"></i>
-                    <i class="fab fa-github"></i>
-                    <i class="fab fa-react"></i>
-                    <i class="fas fa-database"></i>
-                    <i class="fab fa-figma"></i>
-                </div>
-                <img src="../images/bibia.jpg" alt="Beatriz Silva Santos" class="foto-bibia" />
-            </div>
-        </div>
-    </section>
-
-    <div class="carousel-container" id="habilidades-tecnicas">
-        <h2 class="carousel-title">Minhas Habilidades Técnicas</h2>
-        <div class="relative">
-            <div id="carousel0" class="carousel">
-                <div class="carousel-item" style="background-image: url('../images/techskill1.jpg');">
-                    <div class="overlay">HTML, CSS, JavaScript</div>
-                </div>
-                <div class="carousel-item" style="background-image: url('../images/techskill9.jpg');">
-                    <div class="overlay">PHP</div>
-                </div>
-                <div class="carousel-item" style="background-image: url('../images/techskill2.jpg');">
-                    <div class="overlay">React Native</div>
-                </div>
-                <div class="carousel-item" style="background-image: url('../images/techskill3.jpg');">
-                    <div class="overlay">Python (em andamento)</div>
-                </div>
-                <div class="carousel-item" style="background-image: url('../images/techskill4.jpg');">
-                    <div class="overlay">SQL / PL</div>
-                </div>
-                <div class="carousel-item" style="background-image: url('../images/techskill5.jpg');">
-                    <div class="overlay">Power BI</div>
-                </div>
-                <div class="carousel-item" style="background-image: url('../images/techskill6.jpg');">
-                    <div class="overlay">GitHub / VSCode / ExpoSnack / OracleApex / Figma</div>
-                </div>
-                <div class="carousel-item" style="background-image: url('../images/techskill7.jpg');">
-                    <div class="overlay">Noções básicas de segurança da informação</div>
-                </div>
-                <div class="carousel-item" style="background-image: url('../images/techskill8.jpg');">
-                    <div class="overlay">Interesse em IA, NLP e modelos generativos</div>
-                </div>
-            </div>
-            <div class="carousel-btn left" onclick="scrollCarousel('carousel0', -220)"
-                aria-label="Rolar para a esquerda">❮</div>
-            <div class="carousel-btn right" onclick="scrollCarousel('carousel0', 220)"
-                aria-label="Rolar para a direita">❯</div>
-        </div>
-    </div>
-
-    <div class="carousel-container" id="soft-skills">
-        <h2 class="carousel-title">Minhas Soft Skills</h2>
-        <div class="relative">
-            <div id="carousel1" class="carousel">
-                <div class="carousel-item" style="background-image: url('../images/softskill1.jpg');">
-                    <div class="overlay">Comunicação clara</div>
-                </div>
-                <div class="carousel-item" style="background-image: url('../images/softskill2.jpg');">
-                    <div class="overlay">Trabalho em equipe e colaboração</div>
-                </div>
-                <div class="carousel-item" style="background-image: url('../images/softskill3.jpg');">
-                    <div class="overlay">Resolução de problemas</div>
-                </div>
-                <div class="carousel-item" style="background-image: url('../images/softskill4.jpg');">
-                    <div class="overlay">Adaptabilidade (intercâmbio internacional)</div>
-                </div>
-            </div>
-            <div class="carousel-btn left" onclick="scrollCarousel('carousel1', -220)"
-                aria-label="Rolar para a esquerda">❮</div>
-            <div class="carousel-btn right" onclick="scrollCarousel('carousel1', 220)"
-                aria-label="Rolar para a direita">❯</div>
-        </div>
-    </div>
-
-    <div class="carousel-container" id="cursos">
-        <h2 class="carousel-title">Meus Cursos e Certificações</h2>
-        <div class="relative">
-            <div id="carousel2" class="carousel">
-                <div class="carousel-item" style="background-image: url('../images/curso1.jpg');"
-                    onclick="window.location.href='details.html?type=course&id=1'">
-                    <div class="overlay">Fundamentos de Bancos de Dados - Em andamento (Previsão out/2025)</div>
-                </div>
-                <div class="carousel-item" style="background-image: url('../images/curso2.jpg');"
-                    onclick="window.location.href='details.html?type=course&id=2'">
-                    <div class="overlay">Python do Básico ao Avançado - Em andamento (Previsão out/2025)</div>
-                </div>
-                <div class="carousel-item" style="background-image: url('../images/curso3.jpg');"
-                    onclick="window.location.href='details.html?type=course&id=3'">
-                    <div class="overlay">Power BI - Concluído</div>
-                </div>
-                <div class="carousel-item" style="background-image: url('../images/curso4.jpg');"
-                    onclick="window.location.href='details.html?type=course&id=4'">
-                    <div class="overlay">Fundamentos de IA - Em andamento (Previsão set/2025)</div>
-                </div>
-            </div>
-            <div class="carousel-btn left" onclick="scrollCarousel('carousel2', -220)"
-                aria-label="Rolar para a esquerda">❮</div>
-            <div class="carousel-btn right" onclick="scrollCarousel('carousel2', 220)"
-                aria-label="Rolar para a direita">❯</div>
-        </div>
-    </div>
-
-    <div class="carousel-container" id="atividades">
-        <h2 class="carousel-title">Atividades Complementares</h2>
-        <div class="relative">
-            <div id="carousel5" class="carousel">
-                <div class="carousel-item" style="background-image: url('../images/atividade1.jpg');"
-                    onclick="window.location.href='details.html?type=atividade&id=1'">
-                    <div class="overlay">Voluntária | Associação Cultural e Comunitária Pedra que canta </div>
-                </div>
-            </div>
-            <div class="carousel-btn left" onclick="scrollCarousel('carousel5', -220)"
-                aria-label="Rolar para a esquerda">❮</div>
-            <div class="carousel-btn right" onclick="scrollCarousel('carousel5', 220)"
-                aria-label="Rolar para a direita">❯</div>
-        </div>
-    </div>
-
-    <div class="carousel-container" id="idiomas">
-        <h2 class="carousel-title">Idiomas</h2>
-        <div class="relative">
-            <div id="carousel6" class="carousel">
-                <div class="carousel-item" style="background-image: url('../images/certificado-intercambio1.jpg');"
-                    onclick="window.location.href='details.html?type=idioma&id=1'">
-                    <div class="overlay">Inglês: Intermediário (A2, em evolução para B1)</div>
-                </div>
-                <div class="carousel-item" style="background-image: url('../images/idioma2.jpg');"
-                    onclick="window.location.href='details.html?type=idioma&id=2'">
-                    <div class="overlay">Espanhol: Básico (A1)</div>
-                </div>
-            </div>
-            <div class="carousel-btn left" onclick="scrollCarousel('carousel6', -220)"
-                aria-label="Rolar para a esquerda">❮</div>
-            <div class="carousel-btn right" onclick="scrollCarousel('carousel6', 220)"
-                aria-label="Rolar para a direita">❯</div>
-        </div>
-    </div>
-
-    <div class="carousel-container" id="publicacoes">
-        <h2 class="carousel-title">Publicações Científicas</h2>
-        <div class="relative">
-            <div id="carousel7" class="carousel">
-                <a href="https://doi.org/10.5281/zenodo.15477654" target="_blank" rel="noopener noreferrer"
-                    style="text-decoration: none; color: inherit; display: block;">
-                    <div class="carousel-item" style="background-image: url('../images/publicacao1.jpg');">
-                        <div class="overlay"></div>
+                <figure class="hero-image">
+                    <div class="icons-bg" aria-hidden="true">
+                        <i class="fab fa-html5"></i>
+                        <i class="fab fa-css3-alt"></i>
+                        <i class="fab fa-js"></i>
+                        <i class="fab fa-python"></i>
+                        <i class="fab fa-php"></i>
+                        <i class="fab fa-github"></i>
+                        <i class="fab fa-react"></i>
+                        <i class="fas fa-database"></i>
+                        <i class="fab fa-figma"></i>
                     </div>
-                </a>
-            </div>
-            <div class="carousel-btn left" onclick="scrollCarousel('carousel7', -220)"
-                aria-label="Rolar para a esquerda">❮</div>
-            <div class="carousel-btn right" onclick="scrollCarousel('carousel7', 220)"
-                aria-label="Rolar para a direita">❯</div>
-        </div>
-    </div>
+                    <img src="../images/bibia.jpg" alt="Beatriz Silva Santos" class="foto-bibia" />
+                </figure>
+            </article>
+        </section>
 
-    <div class="carousel-container" id="projetos">
-        <h2 class="carousel-title">Meus Projetos no GitHub</h2>
-        <div class="relative">
-            <div id="carousel3" class="carousel">
-                <a href="https://beatrizs97.github.io/Projeto-Lab-Engenharia/" target="_blank" rel="noopener noreferrer"
-                    style="text-decoration: none; color: inherit; display: block;">
-                    <div class="carousel-item gif-item">
-                        <img src="../images/demo-projeto1.gif" alt="Demo Documentação Web" loading="lazy">
-                        <div class="overlay">Documentação Web</div>
-                    </div>
-                </a>
-                <a href="https://github.com/BeatrizS97/Aplicativos_de_Mobile" target="_blank" rel="noopener noreferrer"
-                    style="text-decoration: none; color: inherit; display: block;">
-                    <div class="carousel-item gif-item">
-                        <img src="../images/demo-projeto2.gif" alt="Demo Aplicativos React Native" loading="lazy">
-                        <div class="overlay">Aplicativos em React Native</div>
-                    </div>
-                </a>
-                <a href="https://github.com/BeatrizS97/Cinema" target="_blank" rel="noopener noreferrer"
-                    style="text-decoration: none; color: inherit; display: block;">
-                    <div class="carousel-item gif-item">
-                        <img src="../images/demo-projeto3.gif" alt="Demo Filmes de Terror" loading="lazy">
-                        <div class="overlay">Filmes de Terror</div>
-                    </div>
-                </a>
+        <section class="carousel-container" id="habilidades-tecnicas">
+            <h2 class="carousel-title">Minhas Habilidades Técnicas</h2>
+            <div class="relative">
+                <ul id="carousel0" class="carousel">
+                    <li class="carousel-item" style="background-image: url('../images/techskill1.jpg');">
+                        <span class="overlay">HTML, CSS, JavaScript</span>
+                    </li>
+                    <li class="carousel-item" style="background-image: url('../images/techskill9.jpg');">
+                        <span class="overlay">PHP</span>
+                    </li>
+                    <li class="carousel-item" style="background-image: url('../images/techskill2.jpg');">
+                        <span class="overlay">React Native</span>
+                    </li>
+                    <li class="carousel-item" style="background-image: url('../images/techskill3.jpg');">
+                        <span class="overlay">Python (em andamento)</span>
+                    </li>
+                    <li class="carousel-item" style="background-image: url('../images/techskill4.jpg');">
+                        <span class="overlay">SQL / PL</span>
+                    </li>
+                    <li class="carousel-item" style="background-image: url('../images/techskill5.jpg');">
+                        <span class="overlay">Power BI</span>
+                    </li>
+                    <li class="carousel-item" style="background-image: url('../images/techskill6.jpg');">
+                        <span class="overlay">GitHub / VSCode / ExpoSnack / OracleApex / Figma</span>
+                    </li>
+                    <li class="carousel-item" style="background-image: url('../images/techskill7.jpg');">
+                        <span class="overlay">Noções básicas de segurança da informação</span>
+                    </li>
+                    <li class="carousel-item" style="background-image: url('../images/techskill8.jpg');">
+                        <span class="overlay">Interesse em IA, NLP e modelos generativos</span>
+                    </li>
+                </ul>
+                <button class="carousel-btn left" onclick="scrollCarousel('carousel0', -220)" aria-label="Rolar para a esquerda">❮</button>
+                <button class="carousel-btn right" onclick="scrollCarousel('carousel0', 220)" aria-label="Rolar para a direita">❯</button>
             </div>
-            <div class="carousel-btn left" onclick="scrollCarousel('carousel3', -220)"
-                aria-label="Rolar para a esquerda">❮</div>
-            <div class="carousel-btn right" onclick="scrollCarousel('carousel3', 220)"
-                aria-label="Rolar para a direita">❯</div>
-        </div>
-    </div>
+        </section>
 
-    <div class="carousel-container" id="experiencia-internacional">
-        <h2 class="carousel-title">Experiência Internacional</h2>
-        <div class="relative">
-            <div id="carousel4" class="carousel">
-                <div class="carousel-item" style="background-image: url('../images/experiencia1.jpg');"
-                    onclick="window.location.href='details.html?type=intercambio&id=1'">
-                    <div class="overlay">Intercâmbio de Idiomas - Dublin, Irlanda</div>
-                </div>
+        <section class="carousel-container" id="soft-skills">
+            <h2 class="carousel-title">Minhas Soft Skills</h2>
+            <div class="relative">
+                <ul id="carousel1" class="carousel">
+                    <li class="carousel-item" style="background-image: url('../images/softskill1.jpg');">
+                        <span class="overlay">Comunicação clara</span>
+                    </li>
+                    <li class="carousel-item" style="background-image: url('../images/softskill2.jpg');">
+                        <span class="overlay">Trabalho em equipe e colaboração</span>
+                    </li>
+                    <li class="carousel-item" style="background-image: url('../images/softskill3.jpg');">
+                        <span class="overlay">Resolução de problemas</span>
+                    </li>
+                    <li class="carousel-item" style="background-image: url('../images/softskill4.jpg');">
+                        <span class="overlay">Adaptabilidade (intercâmbio internacional)</span>
+                    </li>
+                </ul>
+                <button class="carousel-btn left" onclick="scrollCarousel('carousel1', -220)" aria-label="Rolar para a esquerda">❮</button>
+                <button class="carousel-btn right" onclick="scrollCarousel('carousel1', 220)" aria-label="Rolar para a direita">❯</button>
             </div>
-            <div class="carousel-btn left" onclick="scrollCarousel('carousel4', -220)"
-                aria-label="Rolar para a esquerda">❮</div>
-            <div class="carousel-btn right" onclick="scrollCarousel('carousel4', 220)"
-                aria-label="Rolar para a direita">❯</div>
-        </div>
-    </div>
+        </section>
+
+        <section class="carousel-container" id="cursos">
+            <h2 class="carousel-title">Meus Cursos e Certificações</h2>
+            <div class="relative">
+                <ul id="carousel2" class="carousel">
+                    <li class="carousel-item" style="background-image: url('../images/curso1.jpg');"
+                        onclick="window.location.href='details.html?type=course&id=1'">
+                        <span class="overlay">Fundamentos de Bancos de Dados - Em andamento (Previsão out/2025)</span>
+                    </li>
+                    <li class="carousel-item" style="background-image: url('../images/curso2.jpg');"
+                        onclick="window.location.href='details.html?type=course&id=2'">
+                        <span class="overlay">Python do Básico ao Avançado - Em andamento (Previsão out/2025)</span>
+                    </li>
+                    <li class="carousel-item" style="background-image: url('../images/curso3.jpg');"
+                        onclick="window.location.href='details.html?type=course&id=3'">
+                        <span class="overlay">Power BI - Concluído</span>
+                    </li>
+                    <li class="carousel-item" style="background-image: url('../images/curso4.jpg');"
+                        onclick="window.location.href='details.html?type=course&id=4'">
+                        <span class="overlay">Fundamentos de IA - Em andamento (Previsão set/2025)</span>
+                    </li>
+                </ul>
+                <button class="carousel-btn left" onclick="scrollCarousel('carousel2', -220)" aria-label="Rolar para a esquerda">❮</button>
+                <button class="carousel-btn right" onclick="scrollCarousel('carousel2', 220)" aria-label="Rolar para a direita">❯</button>
+            </div>
+        </section>
+
+        <section class="carousel-container" id="atividades">
+            <h2 class="carousel-title">Atividades Complementares</h2>
+            <div class="relative">
+                <ul id="carousel5" class="carousel">
+                    <li class="carousel-item" style="background-image: url('../images/atividade1.jpg');"
+                        onclick="window.location.href='details.html?type=atividade&id=1'">
+                        <span class="overlay">Voluntária | Associação Cultural e Comunitária Pedra que canta </span>
+                    </li>
+                </ul>
+                <button class="carousel-btn left" onclick="scrollCarousel('carousel5', -220)" aria-label="Rolar para a esquerda">❮</button>
+                <button class="carousel-btn right" onclick="scrollCarousel('carousel5', 220)" aria-label="Rolar para a direita">❯</button>
+            </div>
+        </section>
+
+        <section class="carousel-container" id="idiomas">
+            <h2 class="carousel-title">Idiomas</h2>
+            <div class="relative">
+                <ul id="carousel6" class="carousel">
+                    <li class="carousel-item" style="background-image: url('../images/certificado-intercambio1.jpg');"
+                        onclick="window.location.href='details.html?type=idioma&id=1'">
+                        <span class="overlay">Inglês: Intermediário (A2, em evolução para B1)</span>
+                    </li>
+                    <li class="carousel-item" style="background-image: url('../images/idioma2.jpg');"
+                        onclick="window.location.href='details.html?type=idioma&id=2'">
+                        <span class="overlay">Espanhol: Básico (A1)</span>
+                    </li>
+                </ul>
+                <button class="carousel-btn left" onclick="scrollCarousel('carousel6', -220)" aria-label="Rolar para a esquerda">❮</button>
+                <button class="carousel-btn right" onclick="scrollCarousel('carousel6', 220)" aria-label="Rolar para a direita">❯</button>
+            </div>
+        </section>
+
+        <section class="carousel-container" id="publicacoes">
+            <h2 class="carousel-title">Publicações Científicas</h2>
+            <div class="relative">
+                <ul id="carousel7" class="carousel">
+                    <li class="carousel-item">
+                        <a href="https://doi.org/10.5281/zenodo.15477654" target="_blank" rel="noopener noreferrer">
+                            <figure style="background-image: url('../images/publicacao1.jpg'); width: 100%; height: 100%; background-size: cover; background-position: center; border-radius: 10px; position: relative;">
+                                <figcaption class="publication-overlay">
+                                    <h3 class="publication-title">Projeto Interdisciplinar de Educação Tecnológica</h3>
+                                    <p class="publication-description">
+                                        Pesquisa sobre integração de tecnologias educacionais no ensino básico, explorando metodologias inovadoras para aprendizagem digital.
+                                    </p>
+                                    <ul class="publication-info">
+                                        <li class="info-tag">Zenodo</li>
+                                        <li class="info-tag">2024</li>
+                                        <li class="info-tag">DOI</li>
+                                    </ul>
+                                </figcaption>
+                            </figure>
+                        </a>
+                    </li>
+                </ul>
+                <button class="carousel-btn left" onclick="scrollCarousel('carousel7', -220)" aria-label="Rolar para a esquerda">❮</button>
+                <button class="carousel-btn right" onclick="scrollCarousel('carousel7', 220)" aria-label="Rolar para a direita">❯</button>
+            </div>
+        </section>
+
+        <section class="carousel-container" id="projetos">
+            <h2 class="carousel-title">Meus Projetos no GitHub</h2>
+            <div class="relative">
+                <ul id="carousel3" class="carousel">
+                    <li class="carousel-item gif-item">
+                        <a href="https://beatrizs97.github.io/Projeto-Lab-Engenharia/" target="_blank" rel="noopener noreferrer">
+                            <figure>
+                                <img src="../images/demo-projeto1.gif" alt="Demo Documentação Web" loading="lazy">
+                                <figcaption class="project-overlay">
+                                    <h3 class="project-title">Documentação Web</h3>
+                                    <p class="project-description">
+                                        Sistema completo de documentação técnica com interface responsiva e navegação intuitiva. Estrutura organizada para facilitar o acesso à informação.
+                                    </p>
+                                    <ul class="project-tech">
+                                        <li class="tech-tag">HTML5</li>
+                                        <li class="tech-tag">CSS3</li>
+                                        <li class="tech-tag">JavaScript</li>
+                                        <li class="tech-tag">Responsivo</li>
+                                    </ul>
+                                </figcaption>
+                            </figure>
+                        </a>
+                    </li>
+
+                    <li class="carousel-item gif-item">
+                        <a href="https://github.com/BeatrizS97/Aplicativos_de_Mobile" target="_blank" rel="noopener noreferrer">
+                            <figure>
+                                <img src="../images/demo-projeto2.gif" alt="Demo Aplicativos React Native" loading="lazy">
+                                <figcaption class="project-overlay">
+                                    <h3 class="project-title">Aplicativos Mobile</h3>
+                                    <p class="project-description">
+                                        Coleção de aplicativos mobile desenvolvidos em React Native, demonstrando diferentes funcionalidades e padrões de desenvolvimento mobile.
+                                    </p>
+                                    <ul class="project-tech">
+                                        <li class="tech-tag">React Native</li>
+                                        <li class="tech-tag">JavaScript</li>
+                                        <li class="tech-tag">Mobile</li>
+                                        <li class="tech-tag">Expo</li>
+                                    </ul>
+                                </figcaption>
+                            </figure>
+                        </a>
+                    </li>
+
+                    <li class="carousel-item gif-item">
+                        <a href="https://github.com/BeatrizS97/Cinema" target="_blank" rel="noopener noreferrer">
+                            <figure>
+                                <img src="../images/demo-projeto3.gif" alt="Demo Filmes de Terror" loading="lazy">
+                                <figcaption class="project-overlay">
+                                    <h3 class="project-title">Catálogo de Terror</h3>
+                                    <p class="project-description">
+                                        Aplicação web para catálogo de filmes de terror com sistema de busca, filtros e design temático imersivo.
+                                    </p>
+                                    <ul class="project-tech">
+                                        <li class="tech-tag">HTML</li>
+                                        <li class="tech-tag">CSS</li>
+                                        <li class="tech-tag">JavaScript</li>
+                                        <li class="tech-tag">API</li>
+                                    </ul>
+                                </figcaption>
+                            </figure>
+                        </a>
+                    </li>
+
+                    <li class="carousel-item gif-item">
+                        <a href="https://github.com/BeatrizS97/Projetos_Simples_e_Praticos_Front-End/tree/main/Humormometro" target="_blank" rel="noopener noreferrer">
+                            <figure>
+                                <img src="../images/demo-projeto4.gif" alt="Demo Humormometro" loading="lazy">
+                                <figcaption class="project-overlay">
+                                    <h3 class="project-title">🎭 Humormômetro</h3>
+                                    <p class="project-description">
+                                        Aplicação interativa para registro e visualização de humor diário com interface intuitiva e animações suaves.
+                                    </p>
+                                    <ul class="project-tech">
+                                        <li class="tech-tag">HTML</li>
+                                        <li class="tech-tag">CSS</li>
+                                        <li class="tech-tag">JavaScript</li>
+                                        <li class="tech-tag">UX/UI</li>
+                                    </ul>
+                                </figcaption>
+                            </figure>
+                        </a>
+                    </li>
+                </ul>
+                <button class="carousel-btn left" onclick="scrollCarousel('carousel3', -310)" aria-label="Rolar para a esquerda">❮</button>
+                <button class="carousel-btn right" onclick="scrollCarousel('carousel3', 310)" aria-label="Rolar para a direita">❯</button>
+            </div>
+        </section>
+
+        <section class="carousel-container" id="experiencia-internacional">
+            <h2 class="carousel-title">Experiência Internacional</h2>
+            <div class="relative">
+                <ul id="carousel4" class="carousel">
+                    <li class="carousel-item" style="background-image: url('../images/experiencia1.jpg');"
+                        onclick="window.location.href='details.html?type=intercambio&id=1'">
+                        <span class="overlay">Intercâmbio de Idiomas - Dublin, Irlanda</span>
+                    </li>
+                </ul>
+                <button class="carousel-btn left" onclick="scrollCarousel('carousel4', -220)" aria-label="Rolar para a esquerda">❮</button>
+                <button class="carousel-btn right" onclick="scrollCarousel('carousel4', 220)" aria-label="Rolar para a direita">❯</button>
+            </div>
+        </section>
+    </main>
 
 </body>
 
