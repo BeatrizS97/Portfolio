@@ -1,6 +1,5 @@
 // Dados organizados apenas para cursos, atividades, idiomas e intercâmbio
 const data = {
-    // ... (mantido igual, sem alterações)
     course: {
         items: {
             1: {
@@ -162,7 +161,7 @@ const data = {
                 title: 'Voluntária - Associação Pedra que Canta',
                 image: '../images/atividade1.jpg',
                 description: 'Atuação voluntária desde 2022 em atividades culturais e comunitárias voltadas à inclusão social, integração e desenvolvimento local. Envolvimento em ações de apoio à comunidade, oficinas, eventos e mentorias para jovens.',
-                status: 'Em andamento (2022–2025)',
+                status: 'Em andamento (2022—2025)',
                 conteudo: [
                     'Apoio em atividades culturais',
                     'Promoção da inclusão social',
@@ -227,17 +226,17 @@ function getUrlParam(param) {
 function renderCarousel(title, items, key = 'image', overlayKey = 'title') {
     if (!items || !items.length) return '';
     return `
-                <div>
-                    <div class="carousel-title">${title}</div>
-                    <div class="carousel">
-                        ${items.map(item => `
-                            <div class="carousel-item" style="background-image:url('${item[key] || item}');">
-                                <div class="overlay">${item[overlayKey] || ''}</div>
-                            </div>
-                        `).join('')}
-                    </div>
-                </div>
-            `;
+        <section>
+            <h3 class="carousel-title">${title}</h3>
+            <ul class="carousel">
+                ${items.map(item => `
+                    <li class="carousel-item" style="background-image:url('${item[key] || item}');">
+                        <span class="overlay">${item[overlayKey] || ''}</span>
+                    </li>
+                `).join('')}
+            </ul>
+        </section>
+    `;
 }
 
 function renderDetails(item) {
@@ -249,26 +248,26 @@ function renderDetails(item) {
 
     let conteudoList = '';
     if (item.conteudo && item.conteudo.length) {
-        conteudoList = `<div style="margin-bottom: 18px;">
-                    <strong>Conteúdo:</strong>
+        conteudoList = `<section style="margin-bottom: 18px;">
+                    <h4><strong>Conteúdo:</strong></h4>
                     <ul class="details-list">
                         ${item.conteudo.map(c => `<li>${c}</li>`).join('')}
                     </ul>
-                </div>`;
+                </section>`;
     }
 
     // Renderiza o HTML completo dos detalhes
     return `
-                <div class="details-content">
-                    <div class="details-title">${item.title}</div>
-                    <div class="details-description">${item.description}</div>
-                    <div class="details-tags">${tags}</div>
-                    ${conteudoList}
-                    <div class="details-buttons">
-                        <button class="btn-play" onclick="window.location.href='main.html#${getUrlParam('type')}s'" aria-label="Voltar">Voltar</button>
-                    </div>
-                </div>
-            `;
+        <section class="details-content">
+            <h2 class="details-title">${item.title}</h2>
+            <p class="details-description">${item.description}</p>
+            <div class="details-tags">${tags}</div>
+            ${conteudoList}
+            <nav class="details-buttons">
+                <button class="btn-play" onclick="window.location.href='main.html#${getUrlParam('type')}s'" aria-label="Voltar">Voltar</button>
+            </nav>
+        </section>
+    `;
 }
 
 // Renderiza os detalhes com base nos parâmetros da URL
@@ -281,12 +280,12 @@ window.onload = function () {
 
     const detailsContainer = document.getElementById('detailsContainer');
     let html = `
-                ${renderDetails(item)}
-                <div class="details-carousel">
-                    ${renderCarousel('Fotos', item.fotos || [], undefined, undefined)}
-                    ${renderCarousel('Extras', item.extras || [], 'image', 'title')}
-                </div>
-            `;
+        ${renderDetails(item)}
+        <aside class="details-carousel">
+            ${renderCarousel('Fotos', item.fotos || [], undefined, undefined)}
+            ${renderCarousel('Extras', item.extras || [], 'image', 'title')}
+        </aside>
+    `;
     detailsContainer.innerHTML = html;
 };
 
@@ -295,9 +294,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const hamburger = document.getElementById('hamburger');
     const navMenu = document.getElementById('nav-menu');
 
+    if (!hamburger || !navMenu) {
+        return;
+    }
+
     hamburger.addEventListener('click', () => {
         navMenu.classList.toggle('active');
         hamburger.classList.toggle('open');
+        
+        // Acessibilidade: atualizar aria-expanded
+        const expanded = hamburger.getAttribute('aria-expanded') === 'true';
+        hamburger.setAttribute('aria-expanded', String(!expanded));
     });
 
     // Fecha o menu quando um link é clicado
@@ -305,6 +312,7 @@ document.addEventListener('DOMContentLoaded', () => {
         link.addEventListener('click', () => {
             navMenu.classList.remove('active');
             hamburger.classList.remove('open');
+            hamburger.setAttribute('aria-expanded', 'false');
         });
     });
 });
