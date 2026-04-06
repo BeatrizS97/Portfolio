@@ -18,8 +18,20 @@ items.forEach(item => {
 // Smooth scroll para links âncora
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
+        const targetId = this.getAttribute('href');
+        const target = document.querySelector(targetId);
+
+        if (!target) {
+            return;
+        }
+
         e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
+
+        const navHeight = document.querySelector('.navbar')?.offsetHeight || 0;
+        const targetTop = target.getBoundingClientRect().top + window.pageYOffset - navHeight - 12;
+
+        window.scrollTo({
+            top: targetTop,
             behavior: 'smooth'
         });
     });
@@ -48,6 +60,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Inicializa verificações
     hideButtonsIfNoScroll();
     initLazyLoad();
+    initSectionReveal();
+    initActiveMenuLink();
+    initKeyboardAccessibleCards();
 });
 
 // Função para esconder botões se não precisar rolar
@@ -168,3 +183,87 @@ document.addEventListener('DOMContentLoaded', () => {
     // Atualiza no carregamento inicial
     updateCarouselButtons();
 });
+
+function initSectionReveal() {
+    const sections = document.querySelectorAll('.hero, .carousel-container');
+    sections.forEach(section => section.classList.add('reveal-on-scroll'));
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+
+    sections.forEach(section => observer.observe(section));
+}
+
+function initActiveMenuLink() {
+    const navLinks = Array.from(document.querySelectorAll('#nav-menu a[href^="#"]'));
+    const sections = navLinks
+        .map(link => document.querySelector(link.getAttribute('href')))
+        .filter(Boolean);
+
+    if (!navLinks.length || !sections.length) {
+        return;
+    }
+
+    const setActiveLink = () => {
+        const navHeight = document.querySelector('.navbar')?.offsetHeight || 0;
+        const scrollMarker = window.scrollY + navHeight + (window.innerHeight * 0.35);
+        let currentSection = sections[0];
+
+        const nearBottom = (window.innerHeight + window.scrollY) >= (document.body.offsetHeight - 4);
+        if (nearBottom) {
+            currentSection = sections[sections.length - 1];
+        }
+
+        if (!nearBottom) {
+            sections.forEach(section => {
+                if (scrollMarker >= section.offsetTop) {
+                    currentSection = section;
+                }
+            });
+        }
+
+        const currentId = `#${currentSection.id}`;
+        navLinks.forEach(link => {
+            const isActive = link.getAttribute('href') === currentId;
+            link.classList.toggle('active-link', isActive);
+            if (isActive) {
+                link.setAttribute('aria-current', 'page');
+            } else {
+                link.removeAttribute('aria-current');
+            }
+        });
+    };
+
+    window.addEventListener('scroll', setActiveLink, { passive: true });
+    setActiveLink();
+}
+
+function initKeyboardAccessibleCards() {
+    const clickableCards = document.querySelectorAll('.carousel-item[onclick]');
+
+    clickableCards.forEach(card => {
+        card.setAttribute('tabindex', '0');
+        card.setAttribute('role', 'button');
+
+        const overlayText = card.querySelector('.overlay')?.textContent?.trim();
+        if (overlayText && !card.getAttribute('aria-label')) {
+            card.setAttribute('aria-label', `Abrir ${overlayText}`);
+        }
+
+        card.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                card.click();
+            }
+        });
+
+        card.addEventListener('focus', () => card.classList.add('active'));
+        card.addEventListener('blur', () => card.classList.remove('active'));
+    });
+}
