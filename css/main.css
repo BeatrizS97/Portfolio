@@ -4,6 +4,12 @@
     --netflix-dark-gray: #141414;
     --netflix-white: #FFFFFF;
     --netflix-gray: #b3b3b3;
+    --navbar-height: 72px;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: var(--navbar-height);
 }
 
 body {
@@ -27,8 +33,10 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 20px;
-    background-color: rgba(0, 0, 0, 0.7);
+    padding: 12px 20px;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.88) 0%, rgba(0, 0, 0, 0.7) 100%);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(229, 9, 20, 0.2);
     position: fixed;
     width: 100%;
     top: 0;
@@ -47,11 +55,18 @@ body {
     margin-left: 20px;
     text-decoration: none;
     font-size: 0.9rem;
-    transition: color 0.3s;
+    transition: color 0.3s, opacity 0.3s;
+    opacity: 0.85;
 }
 
 .navbar nav a:hover {
-    color: var(--netflix-gray);
+    color: #ffd7da;
+    opacity: 1;
+}
+
+.navbar nav a.active-link {
+    color: var(--netflix-red);
+    opacity: 1;
 }
 
 .navbar-right {
@@ -85,7 +100,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 80px 20px 10px 20px;
+    padding: calc(var(--navbar-height) + 20px) 20px 10px 20px;
     overflow: hidden;
 }
 
@@ -104,6 +119,7 @@ body {
     align-items: center;
     gap: 60px;
     padding: 0 40px;
+    animation: fadeIn 0.7s ease-out;
 }
 
 .hero-text {
@@ -197,10 +213,12 @@ body {
 
 .icons-bg i {
     position: absolute;
+    top: -60px;
     font-size: 2.5rem;
     color: rgba(229, 9, 20, 0.18);
     animation: icons-fall 6s linear infinite;
-    opacity: 0.8;
+    animation-fill-mode: both;
+    opacity: 0;
 }
 
 .icons-bg i:nth-child(1) {
@@ -251,7 +269,10 @@ body {
 @keyframes icons-fall {
     0% {
         top: -60px;
-        opacity: 0.7;
+        opacity: 0;
+    }
+    12% {
+        opacity: 0.75;
     }
     80% {
         opacity: 0.8;
@@ -317,14 +338,27 @@ body {
     height: 100%;
     margin: 0;
     position: relative;
+    border-radius: inherit;
+    overflow: hidden;
 }
 
 .gif-item img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 10px;
+    border-radius: inherit;
     display: block;
+}
+
+.publication-figure {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    border-radius: inherit;
+    overflow: hidden;
 }
 
 .project-overlay {
@@ -332,6 +366,7 @@ body {
     bottom: 0;
     left: 0;
     right: 0;
+    max-height: 100%;
     background: linear-gradient(to top, 
         rgba(0, 0, 0, 0.95) 0%, 
         rgba(0, 0, 0, 0.80) 30%, 
@@ -340,6 +375,10 @@ body {
     color: var(--netflix-white);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     backdrop-filter: blur(1px);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    overflow: hidden;
 }
 
 .project-title {
@@ -397,6 +436,7 @@ body {
     bottom: 0;
     left: 0;
     right: 0;
+    max-height: 100%;
     background: linear-gradient(to top, 
         rgba(0, 0, 0, 0.95) 0%, 
         rgba(0, 0, 0, 0.80) 30%, 
@@ -405,10 +445,14 @@ body {
     color: var(--netflix-white);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     backdrop-filter: blur(1px);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    overflow: hidden;
 }
 
 .publication-title {
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     font-weight: 600;
     margin: 0 0 6px 0;
     color: var(--netflix-white);
@@ -458,12 +502,12 @@ body {
 
 .carousel-item:hover .publication-description,
 .carousel-item:hover .publication-info {
-    max-height: 300px;
+    max-height: 60px;
     opacity: 1;
 }
 
 .carousel-item:hover .publication-overlay {
-    padding: 14px;
+    padding: 8px 14px;
     background: linear-gradient(to top, 
         rgba(0, 0, 0, 0.97) 0%, 
         rgba(0, 0, 0, 0.88) 50%, 
@@ -473,12 +517,12 @@ body {
 
 .carousel-item:hover .project-description,
 .carousel-item:hover .project-tech {
-    max-height: 300px;
+    max-height: 60px;
     opacity: 1;
 }
 
 .carousel-item:hover .project-overlay {
-    padding: 14px;
+    padding: 8px 14px;
     background: linear-gradient(to top, 
         rgba(0, 0, 0, 0.97) 0%, 
         rgba(0, 0, 0, 0.88) 50%, 
@@ -587,6 +631,7 @@ body {
 
 .carousel-container {
     padding: 10px 20px 20px 20px;
+    scroll-margin-top: calc(var(--navbar-height) + 16px);
 }
 
 .carousel-title {
@@ -596,9 +641,17 @@ body {
     padding-left: 10px;
 }
 
+.section-subtitle {
+    color: #b8b8b8;
+    font-size: 0.95rem;
+    margin: -4px 0 14px 10px;
+    max-width: 760px;
+}
+
 .carousel {
     display: flex;
     overflow-x: auto;
+    overflow-y: hidden;
     scroll-behavior: smooth;
     gap: 30px;
     padding: 10px 0;
@@ -626,23 +679,160 @@ body {
         0 2px 8px rgba(0, 0, 0, 0.4),
         0 0 0 1px rgba(0, 0, 0, 0.3);
     overflow: hidden;
+    isolation: isolate;
+    background-clip: padding-box;
+    transform: translateZ(0);
+    backface-visibility: hidden;
 }
 
-/* Ajuste específico para imagens com problemas de enquadramento */
-.carousel-item[style*="techskill1.jpg"] {
-    background-repeat: no-repeat !important;
-    background-position: center 5% !important;
-    background-size: contain !important;
-    background-color: #000 !important;
+/* Padroniza visual e proporção dos cards de cursos/certificados */
+#carousel2 {
+    align-items: stretch;
+}
+
+#carousel2 .carousel-item {
+    width: 320px;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    min-height: 180px;
+    background-size: cover !important;
+    background-position: center center !important;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+#carousel2 .overlay {
+    min-height: 56px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Linha de cards com linguagem visual mais Netflix */
+#carousel0 .carousel-item,
+#carousel1 .carousel-item,
+#carousel2 .carousel-item,
+#carousel4 .carousel-item,
+#carousel5 .carousel-item,
+#carousel6 .carousel-item,
+#carousel7 .publication-card {
+    height: 210px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    box-shadow:
+        0 10px 24px rgba(0, 0, 0, 0.35),
+        inset 0 -2px 0 rgba(229, 9, 20, 0.22);
+    transform-origin: center bottom;
+}
+
+#carousel0 .carousel-item::before,
+#carousel1 .carousel-item::before,
+#carousel2 .carousel-item::before,
+#carousel4 .carousel-item::before,
+#carousel5 .carousel-item::before,
+#carousel6 .carousel-item::before,
+#carousel7 .publication-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top,
+        rgba(0, 0, 0, 0.88) 12%,
+        rgba(0, 0, 0, 0.28) 55%,
+        rgba(0, 0, 0, 0.12) 100%);
+    z-index: 1;
+    transition: background 0.35s ease;
+}
+
+#carousel0 .carousel-item::after,
+#carousel1 .carousel-item::after,
+#carousel2 .carousel-item::after,
+#carousel4 .carousel-item::after,
+#carousel5 .carousel-item::after,
+#carousel6 .carousel-item::after,
+#carousel7 .publication-card::after {
+    content: attr(data-badge);
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 3;
+    background: rgba(0, 0, 0, 0.72);
+    border: 1px solid rgba(229, 9, 20, 0.6);
+    color: #ffe7e8;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: none;
+    padding: 4px 8px;
+    border-radius: 999px;
+    backdrop-filter: blur(4px);
+}
+
+#carousel0 .carousel-item .overlay,
+#carousel1 .carousel-item .overlay,
+#carousel2 .carousel-item .overlay,
+#carousel4 .carousel-item .overlay,
+#carousel5 .carousel-item .overlay,
+#carousel6 .carousel-item .overlay {
+    z-index: 2;
+    font-size: 1.05rem;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+    line-height: 1.3;
+    padding: 14px 12px 12px;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.95);
+}
+
+#carousel0 .carousel-item:hover::before,
+#carousel1 .carousel-item:hover::before,
+#carousel2 .carousel-item:hover::before,
+#carousel4 .carousel-item:hover::before,
+#carousel5 .carousel-item:hover::before,
+#carousel6 .carousel-item:hover::before,
+#carousel7 .publication-card:hover::before,
+#carousel0 .carousel-item:focus-visible::before,
+#carousel1 .carousel-item:focus-visible::before,
+#carousel2 .carousel-item:focus-visible::before,
+#carousel4 .carousel-item:focus-visible::before,
+#carousel5 .carousel-item:focus-visible::before,
+#carousel6 .carousel-item:focus-visible::before,
+#carousel7 .publication-card:focus-visible::before {
+    background: linear-gradient(to top,
+        rgba(0, 0, 0, 0.94) 10%,
+    rgba(0, 0, 0, 0.35) 58%,
+    rgba(0, 0, 0, 0.16) 100%);
+}
+
+#carousel7 .publication-card::before,
+#carousel7 .publication-card::after {
+    content: none;
+}
+
+#carousel7 .publication-card figure {
+    border-radius: 12px !important;
+    overflow: hidden;
+}
+
+#carousel3 .carousel-item,
+#carousel4 .carousel-item,
+#carousel7 .carousel-item {
+    width: 340px;
+    height: 210px;
+    border-radius: 12px;
+}
+
+#carousel7 .publication-card {
+    width: 340px;
+    height: 210px;
 }
 
 .carousel-item[style*="techskill9.jpg"] {
     background-repeat: no-repeat !important;
-    background-position: center 25% !important;
+    background-position: center center !important;
 }
 
 .carousel-item[style*="experiencia1.jpg"] {
-    background-size: contain !important;
+    background-size: cover !important;
     background-repeat: no-repeat !important;
     background-position: center center !important;
     background-color: #000 !important;
@@ -658,15 +848,82 @@ body {
     display: block;
     width: 100%;
     height: 100%;
+    border-radius: inherit;
+    overflow: hidden;
 }
 
+.carousel-item figure {
+    border-radius: inherit;
+    overflow: hidden;
+}
+
+/* Recorte robusto para impedir vazamento visual em bordas arredondadas */
+.carousel-item::before,
+.carousel-item::after,
+.carousel-item .overlay,
+.carousel-item figure,
+.carousel-item img,
+.publication-figure,
+.publication-overlay {
+    border-radius: inherit;
+}
+
+/* Garanta que a imagem fique contida */
+.gif-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: inherit;
+    display: block;
+    /* NÃO aplique clip-path na imagem */
+}
+
+/* Garanta overflow hidden nos pais */
+.gif-item figure,
+.carousel-item figure {
+    border-radius: inherit;
+    overflow: hidden;  /* ← ISSO É ESSENCIAL */
+    position: relative;
+}
 .carousel-item:hover {
-    transform: scale(1.05);
+    transform: translateY(-5px);
     z-index: 10;
     box-shadow: 
-        0 4px 16px rgba(0, 0, 0, 0.6),
-        0 0 0 1px rgba(0, 0, 0, 0.5),
-        0 0 25px rgba(229, 9, 20, 0.2);
+        0 10px 20px rgba(0, 0, 0, 0.55),
+    0 0 0 1px rgba(255, 255, 255, 0.14),
+    0 0 20px rgba(0, 0, 0, 0.22);
+}
+
+#carousel3 .carousel-item:hover,
+#carousel4 .carousel-item:hover,
+#carousel7 .carousel-item:hover {
+    transform: translateY(-4px);
+}
+
+.carousel-item:focus-visible,
+.carousel-item a:focus-visible,
+.btn:focus-visible,
+.carousel-btn:focus-visible,
+.navbar nav a:focus-visible,
+.social-links a:focus-visible {
+    outline: 2px solid #ffffff;
+    outline-offset: 2px;
+    box-shadow: 0 0 0 4px rgba(229, 9, 20, 0.5);
+}
+
+.carousel-item:focus-visible {
+    transform: translateY(-4px);
+}
+
+.reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.55s ease, transform 0.55s ease;
+}
+
+.reveal-on-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .carousel-item .overlay {
@@ -674,10 +931,16 @@ body {
     bottom: 0;
     left: 0;
     right: 0;
+    max-height: 100%;
     background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
     padding: 10px;
     color: var(--netflix-white);
     font-size: 0.9rem;
+    z-index: 2;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
 }
 
 .carousel-btn {
@@ -733,7 +996,7 @@ body {
 
     .navbar nav {
         position: fixed;
-        top: 60px;
+        top: var(--navbar-height);
         right: -100%;
         background: rgba(0, 0, 0, 0.95);
         height: auto;
@@ -745,7 +1008,7 @@ body {
         gap: 20px;
         transition: right 0.4s ease-in-out;
         box-shadow: -3px 0 10px rgba(0, 0, 0, 0.6);
-        max-height: calc(100vh - 60px);
+        max-height: calc(100vh - var(--navbar-height));
         overflow-y: auto;
         z-index: 1099;
         align-items: flex-start;
@@ -767,6 +1030,22 @@ body {
 
     .navbar-right {
         display: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    .icons-bg i,
+    .reveal-on-scroll,
+    .hero-content,
+    .carousel-item,
+    .btn,
+    .carousel-btn {
+        animation: none !important;
+        transition: none !important;
     }
 }
 
@@ -805,9 +1084,22 @@ body {
         height: 150px;
     }
 
+    #carousel2 .carousel-item {
+        width: 240px;
+        height: auto;
+        min-height: 135px;
+    }
+
     .gif-item.carousel-item {
         width: 220px;
         height: 140px;
+    }
+
+    #carousel3 .carousel-item,
+    #carousel4 .carousel-item,
+    #carousel7 .carousel-item {
+        width: 260px;
+        height: 162px;
     }
 
     .project-title {
@@ -825,6 +1117,31 @@ body {
 
     .carousel-title {
         font-size: 1.2rem;
+    }
+
+    .section-subtitle {
+        font-size: 0.86rem;
+        margin-bottom: 10px;
+    }
+
+    #carousel0 .carousel-item,
+    #carousel1 .carousel-item,
+    #carousel2 .carousel-item,
+    #carousel4 .carousel-item,
+    #carousel5 .carousel-item,
+    #carousel6 .carousel-item,
+    #carousel7 .publication-card {
+        height: 160px;
+    }
+
+    #carousel0 .carousel-item .overlay,
+    #carousel1 .carousel-item .overlay,
+    #carousel2 .carousel-item .overlay,
+    #carousel4 .carousel-item .overlay,
+    #carousel5 .carousel-item .overlay,
+    #carousel6 .carousel-item .overlay {
+        font-size: 0.9rem;
+        padding: 10px;
     }
 
     .carousel-btn {
@@ -878,9 +1195,22 @@ body {
         height: 225px;
     }
 
+    #carousel2 .carousel-item {
+        width: 200px;
+        height: auto;
+        min-height: 112px;
+    }
+
     .gif-item.carousel-item {
         width: 180px;
         height: 120px;
+    }
+
+    #carousel3 .carousel-item,
+    #carousel4 .carousel-item,
+    #carousel7 .carousel-item {
+        width: 220px;
+        height: 138px;
     }
 
     .project-title {
@@ -930,9 +1260,22 @@ body {
         height: 200px;
     }
 
+    #carousel2 .carousel-item {
+        width: 180px;
+        height: auto;
+        min-height: 100px;
+    }
+
     .gif-item.carousel-item {
         width: 160px;
         height: 105px;
+    }
+
+    #carousel3 .carousel-item,
+    #carousel4 .carousel-item,
+    #carousel7 .carousel-item {
+        width: 200px;
+        height: 126px;
     }
 
     .project-title {
