@@ -6,7 +6,7 @@ const data = {
                 title: 'Fundamentos de Banco de Dados',
                 image: '../images/curso1.jpg',
                 description: 'Curso de Fundamentos de Banco de Dados - Fatec Jundiaí. Aborda conceitos essenciais de bancos de dados relacionais, modelagem, SQL, normalização e práticas de projeto.',
-                status: 'Em andamento',
+                status: 'Em andamento (previsão de conclusão: 2026)',
                 carga: '200h',
                 instituicoes: 'IFRS',
                 conteudo: [
@@ -35,7 +35,7 @@ const data = {
                 title: 'Curso de Python',
                 image: '../images/curso2.jpg',
                 description: 'Curso de Python - Em andamento - Do básico ao avançado - Fatec Jundiaí, Fatec Sorocaba e Huawei Brasil (96h). Conteúdos: lógica de programação, estruturas de controle, funções, orientação a objetos, manipulação de arquivos, bibliotecas padrão, tratamento de exceções e introdução a aplicações práticas em ciência de dados e automação.',
-                status: 'Em andamento',
+                status: 'Em andamento (previsão de conclusão: 2026)',
                 carga: '96h',
                 instituicoes: 'Fatec Jundiaí / Sorocaba / Huawei Brasil',
                 conteudo: [
@@ -95,7 +95,7 @@ const data = {
                 title: 'Fundamentos de Inteligência Artificial',
                 image: '../images/curso4.jpg',
                 description: 'Curso de Fundamentos de Inteligência Artificial (IBM). Introduz os conceitos básicos de IA, incluindo aprendizado de máquina, deep learning, processamento de linguagem natural e aplicações práticas. Curso em andamento.',
-                status: 'Em andamento',
+                status: 'Em andamento (previsão de conclusão: 2026)',
                 carga: '30hr',
                 instituicoes: 'IBM / Coursera',
                 conteudo: [
@@ -117,6 +117,67 @@ const data = {
                 ],
                 extras: [
                     { title: 'Certificado (em andamento)', image: '../images/certificado4.jpg', desc: 'Certificado disponível após conclusão.' }
+                ]
+            },
+            5: {
+                title: 'Programa BIT - Desenvolvedor(a) Front-end e Soluções Low-Code',
+                image: '../images/curso5.gif',
+                description: 'Declaração de participação no Programa BIT (Beleza Inclusiva Tecnológica), com formação em Desenvolvedor(a) Front-end e Soluções Low-Code. Carga total de 86,5 horas, com 67 horas técnicas e 19,5 horas de soft skills.',
+                status: 'Concluído (março/2026)',
+                carga: '86,5h',
+                instituicoes: 'BIT / Instituto Precisa Ser / Vaina Web / L\'Oréal Groupe',
+                conteudo: [
+                    'Fundamentos da Programação Front-end (HTML, CSS/SCSS e JavaScript)',
+                    'Frameworks e consumo de APIs (Vue.js e React.js)',
+                    'Power Apps e IA Generativa (Low-Code e automação)',
+                    'Desenvolvimento de competências comportamentais (soft skills)'
+                ],
+                fotos: [
+                    '../images/curso5.gif'
+                ],
+                extras: [
+                    { title: 'Declaração de participação', image: '../images/certificado2.png', desc: 'Documento emitido em 06/03/2026 (Rio de Janeiro).' }
+                ]
+            },
+            6: {
+                title: 'Bootcamp de Desenvolvimento Full Stack - Atlântico Avanti',
+                image: '../images/curso6.png',
+                description: 'Bootcamp de Desenvolvimento Full Stack realizado pela Atlântico Avanti, em parceria com a Softex, com certificação de conclusão e foco em desenvolvimento prático.',
+                status: 'Concluído (março/2026)',
+                carga: '80h',
+                instituicoes: 'Atlântico Avanti / Softex',
+                conteudo: [
+                    'Fundamentos de desenvolvimento full stack',
+                    'Integração entre front-end e back-end',
+                    'Práticas de construção de aplicações e APIs',
+                    'Trabalho colaborativo e entregas orientadas a projeto'
+                ],
+                fotos: [
+                    '../images/curso6.png'
+                ],
+                extras: [
+                    { title: 'Certificado de conclusão', image: '../images/certificado1.png', desc: 'Período de realização: 31/01/2026 a 07/03/2026. Emissão: 18/03/2026.' }
+                ]
+            },
+            7: {
+                title: 'Ada Tech + Artemisia - Trilha Front-end (Elas+ Tech)',
+                image: '../images/curso7.png',
+                description: 'Formação focada em desenvolvimento front-end para mulheres, com abordagem prática, mentorias e preparação para o mercado de tecnologia.',
+                status: 'Em andamento (previsão de conclusão: abril/2026)',
+                instituicoes: 'Ada Tech / Artemisia / Programa Elas+ Tech',
+                conteudo: [
+                    'HTML5 e CSS3 para interfaces modernas',
+                    'JavaScript para lógica e interatividade',
+                    'React para construção de aplicações',
+                    'TypeScript para tipagem e escalabilidade',
+                    'Aulas ao vivo, conteúdo gravado e mentorias',
+                    'Possibilidade de participação em hackathon final'
+                ],
+                fotos: [
+                    '../images/curso7.png'
+                ],
+                extras: [
+                    { title: 'Trilha em andamento', image: '../images/curso7.png', desc: 'Programa com foco em inclusão feminina e desenvolvimento profissional em tecnologia.' }
                 ]
             }
         }
@@ -264,10 +325,20 @@ function renderDetails(item) {
             <div class="details-tags">${tags}</div>
             ${conteudoList}
             <nav class="details-buttons">
-                <button class="btn-play" onclick="window.location.href='main.html#${getUrlParam('type')}s'" aria-label="Voltar">Voltar</button>
+                <button class="btn-play" onclick="window.location.href='main.html#${getSectionAnchor(getUrlParam('type'))}'" aria-label="Voltar">Voltar</button>
             </nav>
         </section>
     `;
+}
+
+function getSectionAnchor(type) {
+    const sectionMap = {
+        course: 'cursos',
+        atividade: 'atividades',
+        idioma: 'idiomas',
+        intercambio: 'experiencia-internacional'
+    };
+    return sectionMap[type] || 'cursos';
 }
 
 // Renderiza os detalhes com base nos parâmetros da URL
